@@ -1,6 +1,6 @@
 # Awesome Goodman
 
-Software Engineer with over 5 years of experience.
+Software Engineer.
 
 I build things end-to-end — APIs, UI, infrastructure, data pipelines, AI.
 
