@@ -1,0 +1,192 @@
+/* Generated plugin markup cannot carry Astro utility classes. Only the active
+   BasicLightbox, MailtoUI and pagination presentation remains here. */
+:where(.portfolio-site) .basicLightbox {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--color-body);
+  opacity: 0.01;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+  will-change: opacity;
+}
+:where(.portfolio-site) .basicLightbox--visible {
+  opacity: 1;
+}
+:where(.portfolio-site) .basicLightbox__placeholder {
+  max-width: 100%;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+  z-index: 1;
+  will-change: transform;
+  opacity: 0;
+}
+:where(.portfolio-site) .basicLightbox--visible .basicLightbox__placeholder {
+  transform: scale(1);
+  opacity: 1;
+}
+:where(.portfolio-site) .mailtoui-modal {
+  --mailtoui-modal-box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.08),
+    0 4px 4px rgba(0, 0, 0, 0.08), 0 8px 8px rgba(0, 0, 0, 0.08);
+  --mailtoui-modal-head-bgcolor: var(--color-gray-18);
+  --mailtoui-modal-head-title-color: white;
+  --mailtoui-modal-body-bgcolor: var(--color-gray-11);
+  --mailtoui-button-bgcolor: rgba(255, 255, 255, 0.04);
+  --mailtoui-button-text-color: white;
+  --mailtoui-button-bgcolor-hover: var(--color-1-dark);
+  --mailtoui-button-text-color-hover: black;
+  --mailtoui-button-text-size: 16px;
+  --mailtoui-email-address-bgcolor: var(--color-gray-13);
+  --mailtoui-email-address-text-color: var(--text-color);
+  --border-radius: 0;
+  font-family: var(--font-1);
+  background-color: var(--color-body);
+  color: white;
+}
+:where(.portfolio-site) .mailtoui-modal-content {
+  background-color: var(--mailtoui-modal-body-bgcolor);
+  border-radius: var(--border-radius);
+  box-shadow: var(--mailtoui-modal-box-shadow);
+}
+:where(.portfolio-site) .mailtoui-modal-content button {
+  font-weight: 400;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+:where(.portfolio-site) .mailtoui-modal-head {
+  background-color: var(--mailtoui-modal-head-bgcolor);
+}
+:where(.portfolio-site) .mailtoui-modal-title {
+  font-family: var(--font-1);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--mailtoui-modal-head-title-color);
+}
+:where(.portfolio-site) .mailtoui-modal-close {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+:where(.portfolio-site) .mailtoui-modal-close:hover,
+:where(.portfolio-site) .mailtoui-modal-close:focus {
+  color: white;
+  font-weight: 300;
+}
+:where(.portfolio-site) .mailtoui-modal-body {
+  background-color: var(--mailtoui-modal-body-bgcolor);
+}
+:where(.portfolio-site) .mailtoui-button-text {
+  font-size: var(--mailtoui-button-text-size);
+  text-transform: none;
+  letter-spacing: 0;
+}
+:where(.portfolio-site) .mailtoui-button:focus .mailtoui-button-content {
+  background-color: var(--mailtoui-button-bgcolor-hover);
+  color: var(--mailtoui-button-text-color-hover);
+}
+:where(.portfolio-site) .mailtoui-button-content,
+:where(.portfolio-site) .mailtoui-button-copy {
+  background-color: var(--mailtoui-button-bgcolor);
+  color: var(--mailtoui-button-text-color);
+  border-radius: var(--border-radius);
+  box-shadow: none;
+}
+:where(.portfolio-site) .mailtoui-button-content:hover,
+:where(.portfolio-site) .mailtoui-button-content:focus,
+:where(.portfolio-site) .mailtoui-button-copy:hover,
+:where(.portfolio-site) .mailtoui-button-copy:focus {
+  background-color: var(--mailtoui-button-bgcolor-hover);
+  color: var(--mailtoui-button-text-color-hover);
+}
+:where(.portfolio-site) .mailtoui-copy {
+  border-radius: var(--border-radius);
+  box-shadow: none;
+}
+:where(.portfolio-site) .mailtoui-button-icon-copy {
+  line-height: var(--vspace-1);
+}
+:where(.portfolio-site) .mailtoui-button-copy-clicked,
+:where(.portfolio-site) .mailtoui-button-copy-clicked:hover,
+:where(.portfolio-site) .mailtoui-button-copy-clicked:focus {
+  background-color: #1f9d55;
+  color: white;
+}
+:where(.portfolio-site) .mailtoui-email-address {
+  background-color: var(--mailtoui-email-address-bgcolor);
+  color: var(--mailtoui-email-address-text-color);
+  font-size: 16px;
+  line-height: 1;
+  border-radius: var(--border-radius);
+}
+:where(.portfolio-site) .mailtoui-brand a {
+  color: rgba(255, 255, 255, 0.12);
+}
+:where(.portfolio-site) .mailtoui-brand a:focus,
+:where(.portfolio-site) .mailtoui-brand a:hover {
+  font-weight: 300;
+  color: white;
+}
+:where(.portfolio-site)
+  .testimonials
+  .swiper-container-horizontal
+  .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 9px;
+}
+:where(.portfolio-site) .testimonials .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: white;
+  opacity: 0.4;
+}
+:where(.portfolio-site) .testimonials .swiper-pagination-bullet-active {
+  background: var(--color-1);
+  opacity: 1;
+}
+.portfolio-site .basicLightbox__placeholder {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Swiper injects this live region after initialization. */
+:where(.portfolio-site) .swiper-container .swiper-notification {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1000;
+}
+
+:where(.portfolio-site) .testimonials .swiper-pagination-bullet {
+  display: inline-block;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+/* Preserve the former element defaults inside MailtoUI's generated controls. */
+:where(.portfolio-site) :where(.mailtoui-modal) svg {
+  max-width: 100%;
+  height: auto;
+}
+:where(.portfolio-site) :where(.mailtoui-modal) a {
+  text-decoration: none;
+}
+:where(.portfolio-site) :where(.mailtoui-modal) button {
+  font-family: var(--font-1);
+  line-height: calc(var(--vspace-btn) - 2px);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-appearance: button;
+}

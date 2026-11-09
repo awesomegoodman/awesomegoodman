@@ -1,0 +1,86 @@
+/* Original portfolio scale and colours. Scoped to its document; no Preflight. */
+html.portfolio-site {
+  --font-1: 'Public Sans', sans-serif;
+  --font-2: 'DM Serif Display', serif;
+  --color-1: hsla(36, 72%, 70%, 1);
+  --color-2: hsla(168, 62%, 36%, 1);
+  --color-1-dark: hsla(36, 72%, 60%, 1);
+  --color-black: #000000;
+  --color-gray-18: #040404;
+  --color-gray-13: #0e0f0f;
+  --color-gray-11: #121314;
+  --color-gray-10: #141516;
+  --color-gray-9: #2c2c2d;
+  --color-gray-4: #a1a1a2;
+  --color-white: #ffffff;
+  --color-text: var(--color-gray-4);
+  --color-text-dark: var(--color-white);
+  --color-text-light: #858585;
+  --color-btn: var(--color-gray-9);
+  --color-btn-text: var(--color-1);
+  --color-btn-hover: var(--color-white);
+  --color-btn-hover-text: var(--color-black);
+  --color-body: var(--color-gray-10);
+  --color-border: rgba(255, 255, 255, 0.05);
+  --base-size: 62.5%;
+  --multiplier: 1;
+  --base-font-size: calc(1.9rem * var(--multiplier));
+  --space: calc(3.2rem * var(--multiplier));
+  --vspace-0-125: calc(0.125 * var(--space));
+  --vspace-0-25: calc(0.25 * var(--space));
+  --vspace-0-5: calc(0.5 * var(--space));
+  --vspace-0-75: calc(0.75 * var(--space));
+  --vspace-0-875: calc(0.875 * var(--space));
+  --vspace-1: calc(var(--space));
+  --vspace-1-25: calc(1.25 * var(--space));
+  --vspace-1-5: calc(1.5 * var(--space));
+  --vspace-1-75: calc(1.75 * var(--space));
+  --vspace-2: calc(2 * var(--space));
+  --vspace-2-5: calc(2.5 * var(--space));
+  --vspace-3: calc(3 * var(--space));
+  --vspace-3-5: calc(3.5 * var(--space));
+  --vspace-4: calc(4 * var(--space));
+  --vspace-4-5: calc(4.5 * var(--space));
+  --vspace-5: calc(5 * var(--space));
+  --text-scale-ratio: 1.2;
+  --text-size: var(--base-font-size);
+  --text-xs: calc(
+    (var(--text-size) / var(--text-scale-ratio)) / var(--text-scale-ratio)
+  );
+  --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+  --text-md: calc(
+    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
+  --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+  --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+  --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+  --text-display-1: calc(var(--text-xxxl) * var(--text-scale-ratio));
+  --vspace-btn: var(--vspace-2);
+  --width-max: 1200px;
+  --width-wide: 1400px;
+  --width-grid-max: var(--width-max);
+  --gutter: 2rem;
+}
+@media (max-width: 1200px) {
+  html.portfolio-site {
+    --gutter: 1.6rem;
+  }
+}
+@media (max-width: 600px) {
+  html.portfolio-site {
+    --gutter: 1rem;
+    --multiplier: 0.875;
+  }
+}
+
+/* The original loading pulse is the only CSS-authored keyframe. */
+@keyframes sk-scaleout {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

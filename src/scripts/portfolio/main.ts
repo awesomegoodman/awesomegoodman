@@ -219,7 +219,8 @@ document
         element.setAttribute('aria-labelledby', title.id);
         const close = document.createElement('button');
         element.querySelector('.portfolio-modal-close')?.remove();
-        close.className = 'portfolio-modal-close';
+        close.className =
+          'portfolio-modal-close fixed top-[2rem] right-[2rem] z-[2] [border:1px_solid_#777] text-white bg-[#141516] h-[44px] w-[44px] [font:2.5rem/1_sans-serif] p-0 m-0 cursor-pointer inline-block uppercase tracking-[0.35em] text-center whitespace-nowrap [transition:all_0.3s] antialiased';
         close.type = 'button';
         close.setAttribute('aria-label', 'Close project');
         close.textContent = '×';

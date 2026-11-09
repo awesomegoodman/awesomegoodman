@@ -1,0 +1,13 @@
+/* Keep plugin defaults below utilities, and never load Tailwind Preflight.
+   Explicit sources prevent Fieldnotes classes from generating portfolio CSS. */
+@layer theme, base, portfolio-vendor, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) source(none);
+@import 'swiper/css' layer(portfolio-vendor);
+@import 'swiper/css/pagination' layer(portfolio-vendor);
+@import './fonts.css';
+@import './tokens.css';
+@import './integrations.css';
+@source '../../components/portfolio';
+@source '../../layouts/PortfolioLayout.astro';
+@source '../../scripts/portfolio';

@@ -16,6 +16,7 @@
     "format:check": "prettier --check .",
     "test": "node --env-file-if-exists=.env --test tests/build.test.mjs tests/site-config.test.mjs",
     "test:e2e": "playwright test",
+    "test:visual": "playwright test --config playwright.visual.config.ts",
     "validate": "npm run format:check && npm run lint && npm run check && npm run build && npm test",
     "generate:og": "node scripts/generate-og.mjs",
     "generate:portfolio-icons": "node scripts/generate-portfolio-icons.mjs"
@@ -45,6 +46,7 @@
     "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.0",
+    "@tailwindcss/vite": "^4.3.5",
     "@types/basiclightbox": "^5.0.4",
     "@types/moveto": "^1.8.5",
     "eslint": "^10.14.0",
@@ -53,6 +55,7 @@
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.1"
   }

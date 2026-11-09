@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -28,6 +29,7 @@ const legacyBlogPaths = [
 ];
 
 export default defineConfig({
+  vite: { plugins: [tailwindcss()] },
   site: siteOrigin,
   base: process.env.BASE_PATH || '/',
   output: 'static',
