@@ -1,0 +1,52 @@
+---
+import type { GetImageResult } from 'astro';
+interface Props {
+  id: string;
+  image: GetImageResult;
+  alt: string;
+  title: string;
+  href: string;
+  tags: string[];
+}
+const { id, image, alt, title, href, tags } = Astro.props;
+---
+
+<div
+  id={id}
+  class="project-template max-w-dialog [scroll-margin-top:80px] mx-auto my-[20px] js:hidden"
+>
+  <div class="modal-popup max-w-dialog bg-white text-dialog leading-7 text-black/75 overflow-y-auto relative dialog:scheme-light">
+    <img
+      class="mb-6 dialog:block dialog:w-full"
+      src={image.src}
+      alt={alt}
+      width={image.attributes.width}
+      height={image.attributes.height}
+      loading="lazy"
+    />
+
+    <div class="modal-popup__desc pb-2 px-10 max-2xs:px-8 dialog:pt-[1px]">
+      <h2 class="modal-popup__title mb-2 font-sans font-medium text-black [font-variant-ligatures:common-ligatures] text-base leading-8">
+        {title}
+      </h2>
+      <p class="mb-8">
+        <slot />
+      </p>
+      <ul class="modal-popup__cat mb-8 pl-7 list-none text-sm leading-4 text-black/60 relative before:content-[''] before:block before:h-5 before:w-5 before:bg-no-repeat before:bg-center before:bg-contain before:[background-image:url(../../assets/portfolio/icons/icon-tag.svg)] before:absolute before:left-0 before:top-[-0.15em]">
+        {tags.map((tag, index) => (
+          <>
+            <li class="inline after:content-[',_'] last:after:hidden">{tag}</li>
+            {index < tags.length - 1 && ' '}
+          </>
+        ))}
+      </ul>
+    </div>
+
+    <a
+      href={href}
+      class="modal-popup__details bg-black/30 text-white text-xs leading-10 absolute top-8 left-8 px-[12px] transition-all focus:bg-page hover:bg-page hover:outline-none active:text-secondary active:outline-none dialog:bg-black/80"
+    >
+      Project link
+    </a>
+  </div>
+</div>

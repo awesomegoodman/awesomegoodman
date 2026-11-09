@@ -1,4 +1,9 @@
 ---
+import SectionTitle from './SectionTitle.astro';
+import DisplayText from './DisplayText.astro';
+import ProjectCard from './ProjectCard.astro';
+import ProjectDialog from './ProjectDialog.astro';
+import Testimonial from './Testimonial.astro';
 import retailboxPreviewSource from '../../assets/portfolio/portfolio/retailbox.jpg';
 import snakePreviewSource from '../../assets/portfolio/portfolio/snake.png';
 import chessPreviewSource from '../../assets/portfolio/portfolio/chess.jpg';
@@ -93,483 +98,143 @@ const [
 
 <section
   id="works"
-  class="s-works target-section pt-[var(--vspace-5)] pb-[var(--vspace-3-5)] [@media(width<=800px)]:pt-[var(--vspace-4)] [@media(width<=800px)]:pb-[var(--vspace-3)]"
+  class="s-works target-section pt-40 pb-28 max-md:pt-32 max-md:pb-24"
 >
-  <div class="row works-portfolio w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap mx-auto my-0 p-0 [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div
-      class="column lg-12 block flex-none w-full m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0"
-      data-animate-block=""
-    >
-      <Subheading
-        class:list={[
-          standalone
-            ? '[font-variant-ligatures:normal] leading-[var(--vspace-1)]'
-            : '[font-variant-ligatures:common-ligatures] leading-[var(--vspace-1-5)]',
-          'text-pretitle mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[0.2rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] opacity-0 uppercase tracking-[0.3em] relative p-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]',
-        ]}
-        data-animate-el=""
-      >
+  <div class="works-portfolio w-shell max-w-content flex flex-wrap mx-auto max-sm:w-full max-sm:px-edge">
+    <div class="flex-none w-full px-gutter max-2xs:px-0" data-animate-block="">
+      <SectionTitle as={Subheading} animated>
         Recent Works
-      </Subheading>
-      <Heading
-        class="h1 text-[length:var(--text-display-1)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-75)] [font-family:var(--font-2)] font-normal text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] leading-[var(--vspace-2)] tracking-[-0.01em] opacity-0 mx-0 p-0 [@media(width<=500px)]:text-[length:var(--text-xxxl)] [@media(width<=500px)]:leading-[calc(1.625_*_var(--space))] [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-        data-animate-el
-      >
+      </SectionTitle>
+      <DisplayText as={Heading} animated>
         Here are some of my favorite projects I have done lately. Feel free to
         check them out.
-      </Heading>
+      </DisplayText>
 
-      <ul class="folio-list row block-lg-one-half block-stack-on-1000 mt-[var(--vspace-4)] mb-[var(--vspace-1)] [list-style:none] w-auto max-w-[none] flex flex-row flex-wrap [--item-min-height:var(--vspace-4-5)] mx-[calc(var(--gutter)_*_-1)] p-0 [@media(width<=400px)]:mx-0 [@media(width<=500px)]:[--item-min-height:var(--vspace-3-5)]">
-        <li
-          class="folio-list__item column mt-0 mb-[var(--vspace-1)] block flex-none opacity-0 relative w-[50%] mx-0 px-[var(--gutter)] py-0 [@media(400px<width<=500px)]:mb-[var(--vspace-0-75)] [@media(width<=400px)]:mb-0 [@media(width<=400px)]:w-[50%] [@media(width<=400px)]:px-0 [@media(400px<width<=1000px)]:w-full [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-          data-animate-el=""
+      <ul class="folio-list mt-32 mb-8 list-none w-auto max-w-none flex flex-row flex-wrap [--project-size:--spacing(36)] -mx-gutter max-2xs:mx-0 max-xs:[--project-size:--spacing(28)]">
+        <ProjectCard
+          id="modal-01"
+          image={retailboxPreview}
+          category="Fullstack Web Application"
+          label="Read about Retailbox"
+          href="https://www.retailbox.co"
+          visitLabel="Visit Retailbox project"
         >
-          <a
-            class="folio-list__item-link bg-[transparent] no-underline text-[color:white] block w-full pl-[calc(5.5_*_var(--space))] relative [transition:all_0.5s_ease-in-out_0s] [@media(400px<width<=500px)]:pl-[calc(4.25_*_var(--space))] [@media(width<=400px)]:pl-0 [&:focus]:text-[color:var(--color-1)] [&:focus]:[outline:0] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="#modal-01"
-            aria-label="Read about Retailbox"
-          >
-            <div class="folio-list__item-pic block absolute top-0 left-0 m-0 p-0 [@media(width<=400px)]:static before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:z-[1] before:content-[''] before:block before:bg-[rgba(255,_255,_255,_0.75)] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:opacity-0 before:invisible [.folio-list\_\_item-link:focus_&]:before:opacity-[1] [.folio-list\_\_item-link:focus_&]:before:visible [.folio-list\_\_item-link:hover_&]:before:opacity-[1] [.folio-list\_\_item-link:hover_&]:before:visible after:[box-sizing:inherit] after:[transition-property:all,_all] after:[transition-duration:0s,_0.5s] after:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] after:[transition-delay:0s,_0s] after:z-[2] after:block after:content-['+'] after:[font-family:var(--font-1)] after:font-light after:text-[length:2.2rem] after:text-[color:black] after:text-center after:h-[var(--vspace-1)] after:w-[var(--vspace-1)] after:leading-[var(--vspace-1)] after:[transform:scale(0.2)] after:opacity-0 after:invisible after:absolute after:top-[calc(50%_-_var(--vspace-0-5))] after:left-[calc(50%_-_var(--vspace-0-5))] [.folio-list\_\_item-link:focus_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:focus_&]:after:opacity-[1] [.folio-list\_\_item-link:focus_&]:after:visible [.folio-list\_\_item-link:hover_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:hover_&]:after:opacity-[1] [.folio-list\_\_item-link:hover_&]:after:visible">
-              <img
-                class="max-w-full h-[var(--item-min-height)] align-bottom object-cover w-[var(--item-min-height)] m-0 [border-style:none] [@media(width<=400px)]:h-auto [@media(width<=400px)]:w-full"
-                src={retailboxPreview.src}
-                alt=""
-                width={retailboxPreview.attributes.width}
-                height={retailboxPreview.attributes.height}
-                loading="lazy"
-              />
-            </div>
+          retailbox.
+        </ProjectCard>
 
-            <div class="folio-list__item-text pt-[var(--vspace-0-5)] pb-0 min-h-[var(--item-min-height)] relative m-0 px-0 [border-top:1px_solid_var(--color-border)] [@media(width<=400px)]:hidden before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:content-[''] before:block before:w-0 before:h-[1px] before:bg-[var(--color-text-light)] before:absolute before:top-0 before:left-0 [.folio-list\_\_item-link:focus_&]:before:w-full [.folio-list\_\_item-link:hover_&]:before:w-full">
-              <div class="folio-list__item-cat mr-0 ml-[0.2rem] [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] text-[length:var(--text-sm)] text-[color:var(--color-text-light)] leading-[var(--vspace-0-75)] my-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-xs)] [@media(width<=1000px)]:text-[length:var(--text-sm)]">
-                Fullstack Web Application
-              </div>
-              <div class="folio-list__item-title [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] [font-family:var(--font-1)] font-medium text-[length:var(--text-lg)] m-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-md)] [@media(1000px<width<=1200px)]:leading-[var(--vspace-0-875)] [@media(600px<width<=1000px)]:text-[length:var(--text-lg)] [@media(600px<width<=1000px)]:leading-[var(--vspace-1)] [@media(width<=600px)]:text-[length:var(--text-md)] [@media(width<=600px)]:leading-[var(--vspace-0-875)]">
-                retailbox.
-              </div>
-            </div>
-          </a>
-          <a
-            class="folio-list__proj-link bg-[transparent] no-underline text-[color:var(--color-1)] block h-[var(--vspace-1)] w-[var(--vspace-1)] absolute top-[0.8rem] right-[var(--vspace-0-75)] [transition:all_0.3s_ease-in-out_0s] [@media(width<=400px)]:hidden [@media(width<=600px)]:right-[var(--vspace-0-5)] [&:focus]:text-[color:var(--color-2)] [&:hover]:text-[color:var(--color-2)] [&:hover]:[transform:scale(1.2)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="https://www.retailbox.co"
-            aria-label="Visit Retailbox project"
-          >
-            <svg
-              class="max-w-full h-[var(--vspace-0-5)] w-[var(--vspace-0-5)] [transform:translate(-50%,_-50%)_rotate(-45deg)] absolute top-[50%] left-[50%]"
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                class="fill-[white]"
-                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </li>
-
-        <li
-          class="folio-list__item column mt-0 mb-[var(--vspace-1)] block flex-none opacity-0 relative w-[50%] mx-0 px-[var(--gutter)] py-0 [@media(400px<width<=500px)]:mb-[var(--vspace-0-75)] [@media(width<=400px)]:mb-0 [@media(width<=400px)]:w-[50%] [@media(width<=400px)]:px-0 [@media(400px<width<=1000px)]:w-full [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-          data-animate-el=""
+        <ProjectCard
+          id="modal-02"
+          image={snakePreview}
+          category="Game & AI"
+          label="Read about Snake Game with Reinforcement Learning"
+          href="https://github.com/awesomegoodman/RL_Snake"
+          visitLabel="Visit Snake Game with Reinforcement Learning project"
         >
-          <a
-            class="folio-list__item-link bg-[transparent] no-underline text-[color:white] block w-full pl-[calc(5.5_*_var(--space))] relative [transition:all_0.5s_ease-in-out_0s] [@media(400px<width<=500px)]:pl-[calc(4.25_*_var(--space))] [@media(width<=400px)]:pl-0 [&:focus]:text-[color:var(--color-1)] [&:focus]:[outline:0] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="#modal-02"
-            aria-label="Read about Snake Game with Reinforcement Learning"
-          >
-            <div class="folio-list__item-pic block absolute top-0 left-0 m-0 p-0 [@media(width<=400px)]:static before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:z-[1] before:content-[''] before:block before:bg-[rgba(255,_255,_255,_0.75)] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:opacity-0 before:invisible [.folio-list\_\_item-link:focus_&]:before:opacity-[1] [.folio-list\_\_item-link:focus_&]:before:visible [.folio-list\_\_item-link:hover_&]:before:opacity-[1] [.folio-list\_\_item-link:hover_&]:before:visible after:[box-sizing:inherit] after:[transition-property:all,_all] after:[transition-duration:0s,_0.5s] after:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] after:[transition-delay:0s,_0s] after:z-[2] after:block after:content-['+'] after:[font-family:var(--font-1)] after:font-light after:text-[length:2.2rem] after:text-[color:black] after:text-center after:h-[var(--vspace-1)] after:w-[var(--vspace-1)] after:leading-[var(--vspace-1)] after:[transform:scale(0.2)] after:opacity-0 after:invisible after:absolute after:top-[calc(50%_-_var(--vspace-0-5))] after:left-[calc(50%_-_var(--vspace-0-5))] [.folio-list\_\_item-link:focus_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:focus_&]:after:opacity-[1] [.folio-list\_\_item-link:focus_&]:after:visible [.folio-list\_\_item-link:hover_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:hover_&]:after:opacity-[1] [.folio-list\_\_item-link:hover_&]:after:visible">
-              <img
-                class="max-w-full h-[var(--item-min-height)] align-bottom object-cover w-[var(--item-min-height)] m-0 [border-style:none] [@media(width<=400px)]:h-auto [@media(width<=400px)]:w-full"
-                src={snakePreview.src}
-                alt=""
-                width={snakePreview.attributes.width}
-                height={snakePreview.attributes.height}
-                loading="lazy"
-              />
-            </div>
+          Classic Snake Game + Reinforcement Learning.
+        </ProjectCard>
 
-            <div class="folio-list__item-text pt-[var(--vspace-0-5)] pb-0 min-h-[var(--item-min-height)] relative m-0 px-0 [border-top:1px_solid_var(--color-border)] [@media(width<=400px)]:hidden before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:content-[''] before:block before:w-0 before:h-[1px] before:bg-[var(--color-text-light)] before:absolute before:top-0 before:left-0 [.folio-list\_\_item-link:focus_&]:before:w-full [.folio-list\_\_item-link:hover_&]:before:w-full">
-              <div class="folio-list__item-cat mr-0 ml-[0.2rem] [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] text-[length:var(--text-sm)] text-[color:var(--color-text-light)] leading-[var(--vspace-0-75)] my-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-xs)] [@media(width<=1000px)]:text-[length:var(--text-sm)]">
-                Game &amp; AI
-              </div>
-              <div class="folio-list__item-title [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] [font-family:var(--font-1)] font-medium text-[length:var(--text-lg)] m-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-md)] [@media(1000px<width<=1200px)]:leading-[var(--vspace-0-875)] [@media(600px<width<=1000px)]:text-[length:var(--text-lg)] [@media(600px<width<=1000px)]:leading-[var(--vspace-1)] [@media(width<=600px)]:text-[length:var(--text-md)] [@media(width<=600px)]:leading-[var(--vspace-0-875)]">
-                Classic Snake Game + Reinforcement Learning.
-              </div>
-            </div>
-          </a>
-          <a
-            class="folio-list__proj-link bg-[transparent] no-underline text-[color:var(--color-1)] block h-[var(--vspace-1)] w-[var(--vspace-1)] absolute top-[0.8rem] right-[var(--vspace-0-75)] [transition:all_0.3s_ease-in-out_0s] [@media(width<=400px)]:hidden [@media(width<=600px)]:right-[var(--vspace-0-5)] [&:focus]:text-[color:var(--color-2)] [&:hover]:text-[color:var(--color-2)] [&:hover]:[transform:scale(1.2)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="https://github.com/awesomegoodman/RL_Snake"
-            aria-label="Visit Snake Game with Reinforcement Learning project"
-          >
-            <svg
-              class="max-w-full h-[var(--vspace-0-5)] w-[var(--vspace-0-5)] [transform:translate(-50%,_-50%)_rotate(-45deg)] absolute top-[50%] left-[50%]"
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                class="fill-[white]"
-                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </li>
-
-        <li
-          class="folio-list__item column mt-0 mb-[var(--vspace-1)] block flex-none opacity-0 relative w-[50%] mx-0 px-[var(--gutter)] py-0 [@media(400px<width<=500px)]:mb-[var(--vspace-0-75)] [@media(width<=400px)]:mb-0 [@media(width<=400px)]:w-[50%] [@media(width<=400px)]:px-0 [@media(400px<width<=1000px)]:w-full [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-          data-animate-el=""
+        <ProjectCard
+          id="modal-03"
+          image={chessPreview}
+          category="Game & AI"
+          label="Read about Chess Engine"
+          href="https://github.com/awesomegoodman/chess-engine"
+          visitLabel="Visit Chess Engine project"
         >
-          <a
-            class="folio-list__item-link bg-[transparent] no-underline text-[color:white] block w-full pl-[calc(5.5_*_var(--space))] relative [transition:all_0.5s_ease-in-out_0s] [@media(400px<width<=500px)]:pl-[calc(4.25_*_var(--space))] [@media(width<=400px)]:pl-0 [&:focus]:text-[color:var(--color-1)] [&:focus]:[outline:0] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="#modal-03"
-            aria-label="Read about Chess Engine"
-          >
-            <div class="folio-list__item-pic block absolute top-0 left-0 m-0 p-0 [@media(width<=400px)]:static before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:z-[1] before:content-[''] before:block before:bg-[rgba(255,_255,_255,_0.75)] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:opacity-0 before:invisible [.folio-list\_\_item-link:focus_&]:before:opacity-[1] [.folio-list\_\_item-link:focus_&]:before:visible [.folio-list\_\_item-link:hover_&]:before:opacity-[1] [.folio-list\_\_item-link:hover_&]:before:visible after:[box-sizing:inherit] after:[transition-property:all,_all] after:[transition-duration:0s,_0.5s] after:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] after:[transition-delay:0s,_0s] after:z-[2] after:block after:content-['+'] after:[font-family:var(--font-1)] after:font-light after:text-[length:2.2rem] after:text-[color:black] after:text-center after:h-[var(--vspace-1)] after:w-[var(--vspace-1)] after:leading-[var(--vspace-1)] after:[transform:scale(0.2)] after:opacity-0 after:invisible after:absolute after:top-[calc(50%_-_var(--vspace-0-5))] after:left-[calc(50%_-_var(--vspace-0-5))] [.folio-list\_\_item-link:focus_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:focus_&]:after:opacity-[1] [.folio-list\_\_item-link:focus_&]:after:visible [.folio-list\_\_item-link:hover_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:hover_&]:after:opacity-[1] [.folio-list\_\_item-link:hover_&]:after:visible">
-              <img
-                class="max-w-full h-[var(--item-min-height)] align-bottom object-cover w-[var(--item-min-height)] m-0 [border-style:none] [@media(width<=400px)]:h-auto [@media(width<=400px)]:w-full"
-                src={chessPreview.src}
-                alt=""
-                width={chessPreview.attributes.width}
-                height={chessPreview.attributes.height}
-                loading="lazy"
-              />
-            </div>
+          Chess Engine.
+        </ProjectCard>
 
-            <div class="folio-list__item-text pt-[var(--vspace-0-5)] pb-0 min-h-[var(--item-min-height)] relative m-0 px-0 [border-top:1px_solid_var(--color-border)] [@media(width<=400px)]:hidden before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:content-[''] before:block before:w-0 before:h-[1px] before:bg-[var(--color-text-light)] before:absolute before:top-0 before:left-0 [.folio-list\_\_item-link:focus_&]:before:w-full [.folio-list\_\_item-link:hover_&]:before:w-full">
-              <div class="folio-list__item-cat mr-0 ml-[0.2rem] [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] text-[length:var(--text-sm)] text-[color:var(--color-text-light)] leading-[var(--vspace-0-75)] my-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-xs)] [@media(width<=1000px)]:text-[length:var(--text-sm)]">
-                Game &amp; AI
-              </div>
-              <div class="folio-list__item-title [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] [font-family:var(--font-1)] font-medium text-[length:var(--text-lg)] m-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-md)] [@media(1000px<width<=1200px)]:leading-[var(--vspace-0-875)] [@media(600px<width<=1000px)]:text-[length:var(--text-lg)] [@media(600px<width<=1000px)]:leading-[var(--vspace-1)] [@media(width<=600px)]:text-[length:var(--text-md)] [@media(width<=600px)]:leading-[var(--vspace-0-875)]">
-                Chess Engine.
-              </div>
-            </div>
-          </a>
-          <a
-            class="folio-list__proj-link bg-[transparent] no-underline text-[color:var(--color-1)] block h-[var(--vspace-1)] w-[var(--vspace-1)] absolute top-[0.8rem] right-[var(--vspace-0-75)] [transition:all_0.3s_ease-in-out_0s] [@media(width<=400px)]:hidden [@media(width<=600px)]:right-[var(--vspace-0-5)] [&:focus]:text-[color:var(--color-2)] [&:hover]:text-[color:var(--color-2)] [&:hover]:[transform:scale(1.2)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="https://github.com/awesomegoodman/chess-engine"
-            aria-label="Visit Chess Engine project"
-          >
-            <svg
-              class="max-w-full h-[var(--vspace-0-5)] w-[var(--vspace-0-5)] [transform:translate(-50%,_-50%)_rotate(-45deg)] absolute top-[50%] left-[50%]"
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                class="fill-[white]"
-                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </li>
-
-        <li
-          class="folio-list__item column mt-0 mb-[var(--vspace-1)] block flex-none opacity-0 relative w-[50%] mx-0 px-[var(--gutter)] py-0 [@media(400px<width<=500px)]:mb-[var(--vspace-0-75)] [@media(width<=400px)]:mb-0 [@media(width<=400px)]:w-[50%] [@media(width<=400px)]:px-0 [@media(400px<width<=1000px)]:w-full [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-          data-animate-el=""
+        <ProjectCard
+          id="modal-04"
+          image={vendboxPreview}
+          category="IoT"
+          label="Read about Vendbox"
+          href="https://vend.retailbox.co"
+          visitLabel="Visit Vendbox project"
         >
-          <a
-            class="folio-list__item-link bg-[transparent] no-underline text-[color:white] block w-full pl-[calc(5.5_*_var(--space))] relative [transition:all_0.5s_ease-in-out_0s] [@media(400px<width<=500px)]:pl-[calc(4.25_*_var(--space))] [@media(width<=400px)]:pl-0 [&:focus]:text-[color:var(--color-1)] [&:focus]:[outline:0] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="#modal-04"
-            aria-label="Read about Vendbox"
-          >
-            <div class="folio-list__item-pic block absolute top-0 left-0 m-0 p-0 [@media(width<=400px)]:static before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:z-[1] before:content-[''] before:block before:bg-[rgba(255,_255,_255,_0.75)] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:opacity-0 before:invisible [.folio-list\_\_item-link:focus_&]:before:opacity-[1] [.folio-list\_\_item-link:focus_&]:before:visible [.folio-list\_\_item-link:hover_&]:before:opacity-[1] [.folio-list\_\_item-link:hover_&]:before:visible after:[box-sizing:inherit] after:[transition-property:all,_all] after:[transition-duration:0s,_0.5s] after:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] after:[transition-delay:0s,_0s] after:z-[2] after:block after:content-['+'] after:[font-family:var(--font-1)] after:font-light after:text-[length:2.2rem] after:text-[color:black] after:text-center after:h-[var(--vspace-1)] after:w-[var(--vspace-1)] after:leading-[var(--vspace-1)] after:[transform:scale(0.2)] after:opacity-0 after:invisible after:absolute after:top-[calc(50%_-_var(--vspace-0-5))] after:left-[calc(50%_-_var(--vspace-0-5))] [.folio-list\_\_item-link:focus_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:focus_&]:after:opacity-[1] [.folio-list\_\_item-link:focus_&]:after:visible [.folio-list\_\_item-link:hover_&]:after:[transform:scale(1)] [.folio-list\_\_item-link:hover_&]:after:opacity-[1] [.folio-list\_\_item-link:hover_&]:after:visible">
-              <img
-                class="max-w-full h-[var(--item-min-height)] align-bottom object-cover w-[var(--item-min-height)] m-0 [border-style:none] [@media(width<=400px)]:h-auto [@media(width<=400px)]:w-full"
-                src={vendboxPreview.src}
-                alt=""
-                width={vendboxPreview.attributes.width}
-                height={vendboxPreview.attributes.height}
-                loading="lazy"
-              />
-            </div>
-
-            <div class="folio-list__item-text pt-[var(--vspace-0-5)] pb-0 min-h-[var(--item-min-height)] relative m-0 px-0 [border-top:1px_solid_var(--color-border)] [@media(width<=400px)]:hidden before:[box-sizing:inherit] before:[transition-property:all,_all] before:[transition-duration:0s,_0.5s] before:[transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] before:[transition-delay:0s,_0s] before:content-[''] before:block before:w-0 before:h-[1px] before:bg-[var(--color-text-light)] before:absolute before:top-0 before:left-0 [.folio-list\_\_item-link:focus_&]:before:w-full [.folio-list\_\_item-link:hover_&]:before:w-full">
-              <div class="folio-list__item-cat mr-0 ml-[0.2rem] [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] text-[length:var(--text-sm)] text-[color:var(--color-text-light)] leading-[var(--vspace-0-75)] my-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-xs)] [@media(width<=1000px)]:text-[length:var(--text-sm)]">
-                IoT
-              </div>
-              <div class="folio-list__item-title [transition-property:all,_all] [transition-duration:0s,_0.5s] [transition-timing-function:ease,_cubic-bezier(0.215,_0.61,_0.355,_1)] [transition-delay:0s,_0s] [font-family:var(--font-1)] font-medium text-[length:var(--text-lg)] m-0 p-0 [@media(1000px<width<=1200px)]:text-[length:var(--text-md)] [@media(1000px<width<=1200px)]:leading-[var(--vspace-0-875)] [@media(600px<width<=1000px)]:text-[length:var(--text-lg)] [@media(600px<width<=1000px)]:leading-[var(--vspace-1)] [@media(width<=600px)]:text-[length:var(--text-md)] [@media(width<=600px)]:leading-[var(--vspace-0-875)]">
-                Vendbox.
-              </div>
-            </div>
-          </a>
-          <a
-            class="folio-list__proj-link bg-[transparent] no-underline text-[color:var(--color-1)] block h-[var(--vspace-1)] w-[var(--vspace-1)] absolute top-[0.8rem] right-[var(--vspace-0-75)] [transition:all_0.3s_ease-in-out_0s] [@media(width<=400px)]:hidden [@media(width<=600px)]:right-[var(--vspace-0-5)] [&:focus]:text-[color:var(--color-2)] [&:hover]:text-[color:var(--color-2)] [&:hover]:[transform:scale(1.2)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
-            href="https://vend.retailbox.co"
-            aria-label="Visit Vendbox project"
-          >
-            <svg
-              class="max-w-full h-[var(--vspace-0-5)] w-[var(--vspace-0-5)] [transform:translate(-50%,_-50%)_rotate(-45deg)] absolute top-[50%] left-[50%]"
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                class="fill-[white]"
-                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                fill="currentColor"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </li>
+          Vendbox.
+        </ProjectCard>
       </ul>
     </div>
 
-    <div
+    <ProjectDialog
       id="modal-01"
-      class="project-template max-w-[680px] [scroll-margin-top:8rem] mx-auto my-[2rem] p-0 [.js_&]:hidden"
+      image={retailboxGallery}
+      alt="Retailbox dashboard"
+      title="Retailbox"
+      href="https://www.retailbox.co"
+      tags={['Fullstack Web Application', 'SaaS']}
     >
-      <div class="modal-popup max-w-[680px] bg-[white] text-[length:calc(var(--text-size)_*_0.9447)] leading-[var(--vspace-0-875)] text-[color:rgba(0,_0,_0,_0.75)] overflow-y-auto relative m-0 p-0 [.basicLightbox_&]:[color-scheme:light]">
-        <img
-          class="max-w-full h-auto mb-[var(--vspace-0-75)] [border-style:none] [.basicLightbox_&]:block [.basicLightbox_&]:w-full"
-          src={retailboxGallery.src}
-          alt="Retailbox dashboard"
-          width={retailboxGallery.attributes.width}
-          height={retailboxGallery.attributes.height}
-          loading="lazy"
-        />
+      A comprehensive retail management platform built for businesses of all
+      sizes. Designed and developed as a full-stack solo project, featuring
+      inventory management, sales tracking, analytics, and multi-store support.
+    </ProjectDialog>
 
-        <div class="modal-popup__desc pt-0 pb-[var(--vspace-0-25)] m-0 px-[var(--vspace-1-25)] [@media(width<=400px)]:px-[var(--vspace-1)] [.basicLightbox_&]:pt-[1px]">
-          <h2 class="modal-popup__title mt-0 mb-[var(--vspace-0-25)] [font-family:var(--font-1)] font-medium text-[color:black] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-size)] leading-[var(--vspace-1)] mx-0 p-0">
-            Retailbox
-          </h2>
-          <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-            A comprehensive retail management platform built for businesses of
-            all sizes. Designed and developed as a full-stack solo project,
-            featuring inventory management, sales tracking, analytics, and
-            multi-store support.
-          </p>
-          <ul class="modal-popup__cat mt-0 mb-[var(--vspace-1)] pr-0 pl-[calc(0.875_*_var(--space))] [list-style:none] text-[length:var(--text-sm)] leading-[var(--vspace-0-5)] text-[color:rgba(0,_0,_0,_0.6)] relative mx-0 py-0 before:[box-sizing:inherit] before:content-[''] before:block before:h-[calc(0.625_*_var(--space))] before:w-[calc(0.625_*_var(--space))] before:[background-repeat:no-repeat] before:[background-position:center] before:[background-size:contain] before:[background-image:url(../../assets/portfolio/icons/icon-tag.svg)] before:absolute before:left-0 before:top-[-0.15em]">
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-              Fullstack Web Application
-            </li>
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_'] after:hidden">
-              SaaS
-            </li>
-          </ul>
-        </div>
-
-        <a
-          href="https://www.retailbox.co"
-          class="modal-popup__details bg-[rgba(0,_0,_0,_0.3)] no-underline text-[color:white] text-[length:var(--text-xs)] leading-[var(--vspace-1-25)] absolute top-[var(--vspace-1)] left-[var(--vspace-1)] px-[1.2rem] py-0 [transition:all_0.3s_ease-in-out_0s] [&:focus]:bg-[var(--color-body)] [&:hover]:bg-[var(--color-body)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0] [.basicLightbox_&]:bg-[rgba(0,_0,_0,_0.8)]"
-        >
-          Project link
-        </a>
-      </div>
-    </div>
-
-    <div
+    <ProjectDialog
       id="modal-02"
-      class="project-template max-w-[680px] [scroll-margin-top:8rem] mx-auto my-[2rem] p-0 [.js_&]:hidden"
+      image={snakeGallery}
+      alt="Snake reinforcement learning project"
+      title="Snake Game with Reinforcement Learning"
+      href="https://github.com/awesomegoodman/RL_Snake"
+      tags={['Game Development', 'Artificial Intelligence']}
     >
-      <div class="modal-popup max-w-[680px] bg-[white] text-[length:calc(var(--text-size)_*_0.9447)] leading-[var(--vspace-0-875)] text-[color:rgba(0,_0,_0,_0.75)] overflow-y-auto relative m-0 p-0 [.basicLightbox_&]:[color-scheme:light]">
-        <img
-          class="max-w-full h-auto mb-[var(--vspace-0-75)] [border-style:none] [.basicLightbox_&]:block [.basicLightbox_&]:w-full"
-          src={snakeGallery.src}
-          alt="Snake reinforcement learning project"
-          width={snakeGallery.attributes.width}
-          height={snakeGallery.attributes.height}
-          loading="lazy"
-        />
+      A Python implementation of the classic Snake game featuring both human
+      play and an autonomous Q-Learning agent. It demonstrates practical
+      reinforcement learning through Bellman-based Q-updates, state-action value
+      optimisation, and interactive agent training.
+    </ProjectDialog>
 
-        <div class="modal-popup__desc pt-0 pb-[var(--vspace-0-25)] m-0 px-[var(--vspace-1-25)] [@media(width<=400px)]:px-[var(--vspace-1)] [.basicLightbox_&]:pt-[1px]">
-          <h2 class="modal-popup__title mt-0 mb-[var(--vspace-0-25)] [font-family:var(--font-1)] font-medium text-[color:black] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-size)] leading-[var(--vspace-1)] mx-0 p-0">
-            Snake Game with Reinforcement Learning
-          </h2>
-          <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-            A Python implementation of the classic Snake game featuring both
-            human play and an autonomous Q-Learning agent. It demonstrates
-            practical reinforcement learning through Bellman-based Q-updates,
-            state-action value optimisation, and interactive agent training.
-          </p>
-          <ul class="modal-popup__cat mt-0 mb-[var(--vspace-1)] pr-0 pl-[calc(0.875_*_var(--space))] [list-style:none] text-[length:var(--text-sm)] leading-[var(--vspace-0-5)] text-[color:rgba(0,_0,_0,_0.6)] relative mx-0 py-0 before:[box-sizing:inherit] before:content-[''] before:block before:h-[calc(0.625_*_var(--space))] before:w-[calc(0.625_*_var(--space))] before:[background-repeat:no-repeat] before:[background-position:center] before:[background-size:contain] before:[background-image:url(../../assets/portfolio/icons/icon-tag.svg)] before:absolute before:left-0 before:top-[-0.15em]">
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-              Game Development
-            </li>
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_'] after:hidden">
-              Artificial Intelligence
-            </li>
-          </ul>
-        </div>
-
-        <a
-          href="https://github.com/awesomegoodman/RL_Snake"
-          class="modal-popup__details bg-[rgba(0,_0,_0,_0.3)] no-underline text-[color:white] text-[length:var(--text-xs)] leading-[var(--vspace-1-25)] absolute top-[var(--vspace-1)] left-[var(--vspace-1)] px-[1.2rem] py-0 [transition:all_0.3s_ease-in-out_0s] [&:focus]:bg-[var(--color-body)] [&:hover]:bg-[var(--color-body)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0] [.basicLightbox_&]:bg-[rgba(0,_0,_0,_0.8)]"
-        >
-          Project link
-        </a>
-      </div>
-    </div>
-
-    <div
+    <ProjectDialog
       id="modal-03"
-      class="project-template max-w-[680px] [scroll-margin-top:8rem] mx-auto my-[2rem] p-0 [.js_&]:hidden"
+      image={chessGallery}
+      alt="Chess engine project"
+      title="Chess Engine"
+      href="https://github.com/awesomegoodman/chess-engine"
+      tags={['Game Development', 'Artificial Intelligence']}
     >
-      <div class="modal-popup max-w-[680px] bg-[white] text-[length:calc(var(--text-size)_*_0.9447)] leading-[var(--vspace-0-875)] text-[color:rgba(0,_0,_0,_0.75)] overflow-y-auto relative m-0 p-0 [.basicLightbox_&]:[color-scheme:light]">
-        <img
-          class="max-w-full h-auto mb-[var(--vspace-0-75)] [border-style:none] [.basicLightbox_&]:block [.basicLightbox_&]:w-full"
-          src={chessGallery.src}
-          alt="Chess engine project"
-          width={chessGallery.attributes.width}
-          height={chessGallery.attributes.height}
-          loading="lazy"
-        />
+      A custom C++ chess engine implementing core game logic, move generation,
+      and evaluation strategies. Built to explore game theory concepts, search
+      algorithms, and decision-making in competitive environments.
+    </ProjectDialog>
 
-        <div class="modal-popup__desc pt-0 pb-[var(--vspace-0-25)] m-0 px-[var(--vspace-1-25)] [@media(width<=400px)]:px-[var(--vspace-1)] [.basicLightbox_&]:pt-[1px]">
-          <h2 class="modal-popup__title mt-0 mb-[var(--vspace-0-25)] [font-family:var(--font-1)] font-medium text-[color:black] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-size)] leading-[var(--vspace-1)] mx-0 p-0">
-            Chess Engine
-          </h2>
-          <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-            A custom C++ chess engine implementing core game logic, move
-            generation, and evaluation strategies. Built to explore game theory
-            concepts, search algorithms, and decision-making in competitive
-            environments.
-          </p>
-          <ul class="modal-popup__cat mt-0 mb-[var(--vspace-1)] pr-0 pl-[calc(0.875_*_var(--space))] [list-style:none] text-[length:var(--text-sm)] leading-[var(--vspace-0-5)] text-[color:rgba(0,_0,_0,_0.6)] relative mx-0 py-0 before:[box-sizing:inherit] before:content-[''] before:block before:h-[calc(0.625_*_var(--space))] before:w-[calc(0.625_*_var(--space))] before:[background-repeat:no-repeat] before:[background-position:center] before:[background-size:contain] before:[background-image:url(../../assets/portfolio/icons/icon-tag.svg)] before:absolute before:left-0 before:top-[-0.15em]">
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-              Game Development
-            </li>
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_'] after:hidden">
-              Artificial Intelligence
-            </li>
-          </ul>
-        </div>
-
-        <a
-          href="https://github.com/awesomegoodman/chess-engine"
-          class="modal-popup__details bg-[rgba(0,_0,_0,_0.3)] no-underline text-[color:white] text-[length:var(--text-xs)] leading-[var(--vspace-1-25)] absolute top-[var(--vspace-1)] left-[var(--vspace-1)] px-[1.2rem] py-0 [transition:all_0.3s_ease-in-out_0s] [&:focus]:bg-[var(--color-body)] [&:hover]:bg-[var(--color-body)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0] [.basicLightbox_&]:bg-[rgba(0,_0,_0,_0.8)]"
-        >
-          Project link
-        </a>
-      </div>
-    </div>
-
-    <div
+    <ProjectDialog
       id="modal-04"
-      class="project-template max-w-[680px] [scroll-margin-top:8rem] mx-auto my-[2rem] p-0 [.js_&]:hidden"
+      image={vendboxGallery}
+      alt="Vendbox IoT system"
+      title="Vendbox"
+      href="https://vend.retailbox.co"
+      tags={['IoT', 'Embedded Systems']}
     >
-      <div class="modal-popup max-w-[680px] bg-[white] text-[length:calc(var(--text-size)_*_0.9447)] leading-[var(--vspace-0-875)] text-[color:rgba(0,_0,_0,_0.75)] overflow-y-auto relative m-0 p-0 [.basicLightbox_&]:[color-scheme:light]">
-        <img
-          class="max-w-full h-auto mb-[var(--vspace-0-75)] [border-style:none] [.basicLightbox_&]:block [.basicLightbox_&]:w-full"
-          src={vendboxGallery.src}
-          alt="Vendbox IoT system"
-          width={vendboxGallery.attributes.width}
-          height={vendboxGallery.attributes.height}
-          loading="lazy"
-        />
-
-        <div class="modal-popup__desc pt-0 pb-[var(--vspace-0-25)] m-0 px-[var(--vspace-1-25)] [@media(width<=400px)]:px-[var(--vspace-1)] [.basicLightbox_&]:pt-[1px]">
-          <h2 class="modal-popup__title mt-0 mb-[var(--vspace-0-25)] [font-family:var(--font-1)] font-medium text-[color:black] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-size)] leading-[var(--vspace-1)] mx-0 p-0">
-            Vendbox
-          </h2>
-          <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-            IoT-enabled vending machines with cashless and remote management
-            capabilities. The system supports seamless self-checkout, real-time
-            sales and inventory monitoring, and data access via comprehensive
-            APIs.
-          </p>
-          <ul class="modal-popup__cat mt-0 mb-[var(--vspace-1)] pr-0 pl-[calc(0.875_*_var(--space))] [list-style:none] text-[length:var(--text-sm)] leading-[var(--vspace-0-5)] text-[color:rgba(0,_0,_0,_0.6)] relative mx-0 py-0 before:[box-sizing:inherit] before:content-[''] before:block before:h-[calc(0.625_*_var(--space))] before:w-[calc(0.625_*_var(--space))] before:[background-repeat:no-repeat] before:[background-position:center] before:[background-size:contain] before:[background-image:url(../../assets/portfolio/icons/icon-tag.svg)] before:absolute before:left-0 before:top-[-0.15em]">
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-              IoT
-            </li>
-            <li class="inline m-0 p-0 after:[box-sizing:inherit] after:content-[',_'] after:hidden">
-              Embedded Systems
-            </li>
-          </ul>
-        </div>
-
-        <a
-          href="https://vend.retailbox.co"
-          class="modal-popup__details bg-[rgba(0,_0,_0,_0.3)] no-underline text-[color:white] text-[length:var(--text-xs)] leading-[var(--vspace-1-25)] absolute top-[var(--vspace-1)] left-[var(--vspace-1)] px-[1.2rem] py-0 [transition:all_0.3s_ease-in-out_0s] [&:focus]:bg-[var(--color-body)] [&:hover]:bg-[var(--color-body)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0] [.basicLightbox_&]:bg-[rgba(0,_0,_0,_0.8)]"
-        >
-          Project link
-        </a>
-      </div>
-    </div>
+      IoT-enabled vending machines with cashless and remote management
+      capabilities. The system supports seamless self-checkout, real-time sales
+      and inventory monitoring, and data access via comprehensive APIs.
+    </ProjectDialog>
   </div>
 
-  <div class="row testimonials mt-[var(--vspace-3)] mb-0 w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap mx-auto p-0 [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div
-      class="column lg-12 block flex-none w-full m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0"
-      data-animate-block=""
-    >
+  <div class="testimonials mt-24 w-shell max-w-content flex flex-wrap mx-auto max-sm:w-full max-sm:px-edge">
+    <div class="flex-none w-full px-gutter max-2xs:px-0" data-animate-block="">
       <div
-        class="swiper swiper-container swiper-container-horizontal testimonial-slider pt-0 pb-[var(--vspace-2-5)] relative overflow-hidden [list-style:none] z-[1] opacity-0 mx-auto my-0 px-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
+        class="swiper swiper-container swiper-container-horizontal testimonial-slider pb-20 relative overflow-hidden list-none z-[1] opacity-0 mx-auto no-js:opacity-100 reduced:opacity-100"
         aria-label="Testimonials"
         data-animate-el=""
       >
-        <div class="swiper-wrapper relative w-full h-full z-[1] flex [transition-property:transform] [box-sizing:content-box] [transform:translate3d(0px,_0,_0)] m-0 p-0 [.no-js_&]:flex-wrap">
-          <div class="testimonial-slider__slide swiper-slide [flex-shrink:0] w-full h-full relative [transition-property:transform] m-0 p-0 [@media(width>800px)]:[.no-js_&]:w-[50%]">
-            <div class="testimonial-slider__author mt-0 mb-[var(--vspace-0-5)] pr-0 pl-[var(--vspace-2-5)] inline-block min-h-[var(--vspace-2)] relative mx-0 py-0">
-              <img
-                src={jojuAvatar.src}
-                alt="Author image"
-                class="testimonial-slider__avatar max-w-full h-[var(--vspace-1-75)] mb-[var(--vspace-1)] w-[var(--vspace-1-75)] [border-radius:100%] [outline-width:medium] [outline-style:none] [outline-color:currentColor] absolute top-0 left-0 [filter:grayscale(100%)] [border-style:none] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:[filter:none]"
-                width={jojuAvatar.attributes.width}
-                height={jojuAvatar.attributes.height}
-                loading="lazy"
-              />
-              <cite class="testimonial-slider__cite block">
-                <strong class="font-normal text-[length:calc(var(--text-size)_*_0.8947)] leading-[var(--vspace-0-75)] not-italic text-[color:white] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:text-[color:var(--color-1)]">
-                  Joju
-                </strong>
-                <span class="not-italic block text-[length:calc(var(--text-size)_*_0.7368)] font-light leading-[var(--vspace-0-5)] text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:text-[color:white]">
-                  CEO, Jorrel
-                </span>
-              </cite>
-            </div>
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              Awesome is not only skilled at what he does but also dependable
-              and easy to work with. It's always a pleasure working with him.
-            </p>
-          </div>
+        <div class="swiper-wrapper relative w-full h-full z-[1] flex [transition-property:transform] box-content [transform:translate3d(0px,_0,_0)] no-js:flex-wrap">
+          <Testimonial image={jojuAvatar} name="Joju" role="CEO, Jorrel">
+            Awesome is not only skilled at what he does but also dependable and
+            easy to work with. It's always a pleasure working with him.
+          </Testimonial>
 
-          <div class="testimonial-slider__slide swiper-slide [flex-shrink:0] w-full h-full relative [transition-property:transform] m-0 p-0 [@media(width>800px)]:[.no-js_&]:w-[50%]">
-            <div class="testimonial-slider__author mt-0 mb-[var(--vspace-0-5)] pr-0 pl-[var(--vspace-2-5)] inline-block min-h-[var(--vspace-2)] relative mx-0 py-0">
-              <img
-                src={emmanuelAvatar.src}
-                alt="Author image"
-                class="testimonial-slider__avatar max-w-full h-[var(--vspace-1-75)] mb-[var(--vspace-1)] w-[var(--vspace-1-75)] [border-radius:100%] [outline-width:medium] [outline-style:none] [outline-color:currentColor] absolute top-0 left-0 [filter:grayscale(100%)] [border-style:none] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:[filter:none]"
-                width={emmanuelAvatar.attributes.width}
-                height={emmanuelAvatar.attributes.height}
-                loading="lazy"
-              />
-              <cite class="testimonial-slider__cite block">
-                <strong class="font-normal text-[length:calc(var(--text-size)_*_0.8947)] leading-[var(--vspace-0-75)] not-italic text-[color:white] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:text-[color:var(--color-1)]">
-                  Emmanuel Grant
-                </strong>
-                <span class="not-italic block text-[length:calc(var(--text-size)_*_0.7368)] font-light leading-[var(--vspace-0-5)] text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [.testimonial-slider\_\_slide:hover_&]:text-[color:white]">
-                  Partner, Sterlasvan
-                </span>
-              </cite>
-            </div>
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              Awesome approaches problems logically and understands ideas
-              quickly, often without the need for lengthy explanations.
-            </p>
-          </div>
+          <Testimonial
+            image={emmanuelAvatar}
+            name="Emmanuel Grant"
+            role="Partner, Sterlasvan"
+          >
+            Awesome approaches problems logically and understands ideas quickly,
+            often without the need for lengthy explanations.
+          </Testimonial>
         </div>
 
-        <div class="swiper-pagination absolute text-center [transition:300ms_opacity] [transform:translate3d(0,0,0)] z-[10] bottom-[10px] left-0 w-full m-0 p-0 [&.swiper-pagination-lock]:hidden [&.swiper-pagination-hidden]:opacity-0"></div>
+        <div class="swiper-pagination absolute text-center [transition:300ms_opacity] [transform:translate3d(0,0,0)] z-[10] bottom-[10px] left-0 w-full [&.swiper-pagination-lock]:hidden [&.swiper-pagination-hidden]:opacity-0"></div>
       </div>
     </div>
   </div>

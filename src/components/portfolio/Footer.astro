@@ -1,33 +1,31 @@
 ---
 ---
 
-<footer class="s-footer mt-[auto] pt-[var(--vspace-1)] pb-[var(--vspace-3)] text-[color:var(--color-text-light)]">
-  <div class="row w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap relative mx-auto my-0 p-0 [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div class="column ss-copyright mt-[calc(var(--vspace-0-25)_*_-1)] mr-[5.2rem] mb-0 ml-0 block flex-1 leading-[var(--vspace-0-875)] px-[var(--gutter)] py-0 [@media(width<=400px)]:[flex-grow:0] [@media(width<=400px)]:[flex-shrink:0] [@media(width<=400px)]:[flex-basis:auto] [@media(width<=400px)]:w-full [@media(width<=400px)]:px-0">
-      <span class="text-[length:var(--text-sm)] inline-block [@media(width<=600px)]:block after:[box-sizing:inherit] after:content-['|'] after:inline-block after:pr-[0.8rem] after:pl-[1rem] after:text-[color:rgba(255,_255,_255,_0.1)] after:py-0 [@media(width<=600px)]:after:hidden">
+<footer class="s-footer mt-auto pt-8 pb-24 text-muted">
+  <div class="w-shell max-w-content flex flex-wrap relative mx-auto max-sm:w-full max-sm:px-edge">
+    <div class="ss-copyright -mt-2 mr-[52px] flex-1 leading-7 px-gutter max-2xs:flex-none max-2xs:w-full max-2xs:px-0">
+      <span class="text-sm inline-block max-sm:block after:content-['|'] after:inline-block after:pr-[8px] after:pl-[10px] after:text-white/10 max-sm:after:hidden">
         © {new Date().getUTCFullYear()}, Awesome Goodman
       </span>
-      <span class="text-[length:var(--text-sm)] inline-block [@media(width<=600px)]:block after:[box-sizing:inherit] after:content-['|'] after:hidden after:pr-[0.8rem] after:pl-[1rem] after:text-[color:rgba(255,_255,_255,_0.1)] after:py-0">
-        💻⚙️
-      </span>
+      <span class="text-sm inline-block max-sm:block">💻⚙️</span>
     </div>
 
-    <div class="ss-go-top z-[2] absolute top-[calc(var(--vspace-1)_*_-1)] right-[var(--gutter)] m-0 p-0 [@media(width<=600px)]:top-[calc(var(--vspace-0-25)_*_-1)] [@media(400px<width<=600px)]:right-[calc(6vw_+_var(--gutter))] [@media(width<=400px)]:right-[6vw]">
+    <div class="ss-go-top z-[2] absolute -top-8 right-gutter max-sm:-top-2 max-sm:right-[calc(6vw_+_var(--gutter))] max-2xs:right-edge">
       <a
-        class="smoothscroll bg-[var(--color-body)] no-underline text-[color:var(--color-text)] flex items-center justify-center h-[calc(1.625_*_var(--space))] w-[var(--vspace-1-5)] relative [border:1px_solid_var(--color-text)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:bg-[white] [&:focus]:text-[color:white] [&:focus]:[border-color:white] [&:hover]:bg-[white] [&:hover]:text-[color:white] [&:hover]:[border-color:white] [&:hover]:[outline:0] [&:active]:[outline:0]"
+        class="smoothscroll group/top bg-page text-copy flex items-center justify-center h-13 w-12 relative border border-copy transition-all focus:bg-white focus:text-white focus:border-white hover:bg-white hover:text-white hover:border-white hover:outline-none active:outline-none"
         title="Back to Top"
         aria-label="Back to top"
         href="#top"
       >
         <svg
-          class="max-w-full h-[var(--vspace-0-5)] w-[var(--vspace-0-5)] [transition:all_0.3s_ease-in-out_0s]"
+          class="size-4 transition-all"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill-rule="evenodd"
           clip-rule="evenodd"
         >
           <path
-            class="fill-[white] [a:focus_&]:fill-[black] [a:hover_&]:fill-[black]"
+            class="fill-white group-focus/top:fill-black group-hover/top:fill-black"
             d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"
           />
         </svg>

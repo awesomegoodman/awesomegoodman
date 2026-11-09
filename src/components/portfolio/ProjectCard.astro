@@ -1,0 +1,77 @@
+---
+import type { GetImageResult } from 'astro';
+interface Props {
+  id: string;
+  image: GetImageResult;
+  category: string;
+  label: string;
+  href: string;
+  visitLabel: string;
+}
+const { id, image, category, label, href, visitLabel } = Astro.props;
+---
+
+<li
+  class="folio-list__item relative mb-8 block w-1/2 flex-none px-gutter opacity-0 max-lg:w-full max-xs:mb-6 max-2xs:mb-0 max-2xs:w-1/2 max-2xs:px-0 no-js:opacity-100 reduced:opacity-100"
+  data-animate-el=""
+>
+  <a
+    class="folio-list__item-link group/card relative block w-full pl-44 text-white transition-all duration-500 hover:text-accent hover:outline-none focus:text-accent focus:outline-none active:not-hover:not-focus:text-secondary active:outline-none max-xs:pl-34 max-2xs:pl-0"
+    href={`#${id}`}
+    aria-label={label}
+  >
+    <div
+      class:list={[
+        'folio-list__item-pic absolute top-0 left-0 max-2xs:static',
+        "before:absolute before:inset-0 before:z-1 before:block before:invisible before:bg-white/75 before:opacity-0 before:content-[''] group-hover/card:before:visible group-hover/card:before:opacity-100 group-focus/card:before:visible group-focus/card:before:opacity-100",
+        "after:absolute after:top-[calc(50%-var(--spacing)*4)] after:left-[calc(50%-var(--spacing)*4)] after:z-2 after:block after:invisible after:size-8 after:text-center after:font-sans after:text-[22px] after:leading-8 after:font-light after:text-black after:opacity-0 after:[transform:scale(0.2)] after:content-['+']",
+        'group-hover/card:after:visible group-hover/card:after:opacity-100 group-hover/card:after:[transform:scale(1)] group-focus/card:after:visible group-focus/card:after:opacity-100 group-focus/card:after:[transform:scale(1)]',
+      ]}
+    >
+      <img
+        class="size-project object-cover align-bottom max-2xs:h-auto max-2xs:w-full"
+        src={image.src}
+        alt=""
+        width={image.attributes.width}
+        height={image.attributes.height}
+        loading="lazy"
+      />
+    </div>
+
+    <div
+      class:list={[
+        'folio-list__item-text relative min-h-project border-t border-t-rule pt-4 max-2xs:hidden',
+        "before:absolute before:top-0 before:left-0 before:block before:h-px before:w-0 before:bg-muted before:content-[''] group-hover/card:before:w-full group-focus/card:before:w-full",
+      ]}
+    >
+      <div class="folio-list__item-cat ml-[2px] text-sm leading-6 text-muted max-xl:text-xs max-lg:text-sm">
+        {category}
+      </div>
+      <div class="folio-list__item-title font-sans text-lg font-medium max-xl:text-lead max-xl:leading-7 max-lg:text-lg max-lg:leading-8 max-sm:text-lead max-sm:leading-7">
+        <slot />
+      </div>
+    </div>
+  </a>
+  <a
+    class="folio-list__proj-link absolute top-[8px] right-6 block size-8 text-accent transition-all hover:[transform:scale(1.2)] hover:text-secondary focus:text-secondary active:text-secondary max-sm:right-4 max-2xs:hidden"
+    href={href}
+    aria-label={visitLabel}
+  >
+    <svg
+      class="h-4 w-4 [transform:translate(-50%,_-50%)_rotate(-45deg)] absolute top-1/2 left-1/2"
+      width="15"
+      height="15"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        class="fill-white"
+        d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+        fill="currentColor"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </a>
+</li>

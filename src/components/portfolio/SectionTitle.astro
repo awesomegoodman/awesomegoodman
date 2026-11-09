@@ -1,0 +1,38 @@
+---
+interface Props {
+  as?: 'h2' | 'h3' | 'p' | 'div';
+  line?: boolean;
+  animated?: boolean;
+  spacing?: 'normal' | 'wide' | 'tight';
+  timeline?: boolean;
+}
+const {
+  as: Tag = 'h2',
+  line = false,
+  animated = false,
+  spacing = 'normal',
+  timeline = false,
+} = Astro.props;
+---
+
+<Tag
+  class:list={[
+    'text-pretitle relative font-sans text-sm font-normal uppercase tracking-wide',
+    Tag === 'h3'
+      ? 'leading-10'
+      : Tag === 'p' || Tag === 'div'
+        ? 'leading-8'
+        : 'leading-12',
+    (Tag === 'h2' || Tag === 'h3') &&
+      '[font-variant-ligatures:common-ligatures]',
+    spacing === 'wide' ? 'mb-8' : spacing === 'tight' ? 'mb-1' : 'mb-4',
+    timeline ? 'ml-timeline' : 'ml-[2px]',
+    line
+      ? "text-accent pl-[60px] [transform:translateX(-60px)] max-md:pl-[30px] max-md:transform-none before:absolute before:top-1/2 before:left-0 before:block before:h-px before:w-[40px] before:bg-white/50 before:content-[''] max-md:before:w-[20px]"
+      : 'text-white',
+    animated && 'opacity-0 no-js:opacity-100 reduced:opacity-100',
+  ]}
+  data-animate-el={animated ? '' : undefined}
+>
+  <slot />
+</Tag>

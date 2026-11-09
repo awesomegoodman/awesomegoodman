@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+type Props = HTMLAttributes<'a'>;
+const { class: className, ...attributes } = Astro.props;
+---
+
+<a
+  {...attributes}
+  class:list={[
+    'btn inline-block h-button w-full cursor-pointer border border-panel bg-panel px-[36px] text-center text-accent',
+    'font-sans text-xs leading-button font-semibold tracking-widest whitespace-nowrap uppercase antialiased',
+    'transition-all ease-default hover:border-white hover:bg-white hover:text-black hover:outline-none focus:border-white focus:bg-white focus:text-black focus:outline-none active:not-hover:not-focus:text-secondary active:outline-none',
+    className,
+  ]}
+>
+  <slot />
+</a>

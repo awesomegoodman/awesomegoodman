@@ -1,26 +1,26 @@
 ---
+import SectionTitle from './SectionTitle.astro';
 ---
 
 <section
   id="intro"
-  class="s-intro target-section [--gutter:6rem] [--text-huge-multiplier:1] relative [@media(600px<width<=800px)]:[--gutter:4rem] [@media(600px<width<=800px)]:[--text-huge-multiplier:0.7] [@media(width<=600px)]:[--gutter:2rem] [@media(1200px<width<=1600px)]:[--text-huge-multiplier:0.92] [@media(1000px<width<=1200px)]:[--text-huge-multiplier:0.85] [@media(900px<width<=1000px)]:[--text-huge-multiplier:0.8] [@media(800px<width<=900px)]:[--text-huge-multiplier:0.75] [@media(500px<width<=600px)]:[--text-huge-multiplier:0.58] [@media(width<=500px)]:[--text-huge-multiplier:0.55] [@media(width<=800px)]:[.no-js_&]:min-h-[auto]"
+  class="s-intro target-section relative [--gutter:60px] [--intro-scale:1] max-2xl:[--intro-scale:0.92] max-xl:[--intro-scale:0.85] max-lg:[--intro-scale:0.8] max-900:[--intro-scale:0.75] max-md:[--intro-scale:0.7] max-md:[--gutter:40px] max-sm:[--intro-scale:0.58] max-sm:[--gutter:20px] max-xs:[--intro-scale:0.55] max-md:no-js:min-h-auto"
 >
-  <div class="row intro-content wide pt-[calc(16vh_+_var(--header-height))] pb-[var(--vspace-3)] w-[92%] max-w-[var(--width-wide)] flex flex-row flex-wrap min-h-[calc(25.5_*_var(--space))] justify-center items-center mx-auto my-0 px-0 [@media(800px<width<=1000px)]:pt-[calc(14vh_+_var(--header-height))] [@media(width<=800px)]:pt-[calc(9.6rem_+_var(--header-height))] [@media(width<=800px)]:min-h-0 [@media(width<=800px)]:items-start [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div class="column block flex-1 m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:[flex-grow:0] [@media(width<=400px)]:[flex-shrink:0] [@media(width<=400px)]:[flex-basis:auto] [@media(width<=400px)]:w-full [@media(width<=400px)]:px-0">
-      <div class="text-pretitle with-line mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[0.2rem] pr-0 pl-[6rem] [font-family:var(--font-1)] text-[length:var(--text-sm)] font-normal text-[color:var(--color-1)] uppercase tracking-[0.3em] relative [transform:translateX(-6rem)] py-0 [@media(width<=800px)]:pl-[3rem] [@media(width<=800px)]:[transform:none] before:[box-sizing:inherit] before:content-[''] before:block before:h-[1px] before:w-[4rem] before:bg-[rgba(255,_255,_255,_0.5)] before:absolute before:top-[50%] before:left-0 [@media(width<=800px)]:before:w-[2rem]">
+  <div class="intro-content pt-[calc(16vh_+_var(--spacing-header))] pb-24 w-shell max-w-wide flex flex-wrap min-h-204 justify-center items-center mx-auto max-lg:pt-[calc(14vh_+_var(--spacing-header))] max-md:pt-[160px] max-md:min-h-0 max-md:items-start max-sm:w-full max-sm:px-edge">
+    <div class="flex-1 px-gutter max-2xs:flex-none max-2xs:w-full max-2xs:px-0">
+      <SectionTitle as="div" line>
         Hello World
-      </div>
+      </SectionTitle>
 
-      <h1 class="text-huge-title text-[length:calc(var(--text-huge)_*_var(--text-huge-multiplier))] mt-0 mb-[var(--vspace-0-75)] pr-[5vw] pl-0 [font-family:var(--font-2)] font-normal text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] leading-[1.074] tracking-[-0.01em] [--text-huge:10.8rem] mx-0 py-0 [@media(width<=400px)]:text-[length:var(--text-display-1)] [@media(width<=400px)]:leading-[var(--vspace-2)] [@media(width<=800px)]:mb-[var(--vspace-1-5)] [@media(width<=800px)]:pr-0">
-        I am Awesome, <br class="[@media(width<=900px)]:hidden" />a software
-        engineer.
+      <h1 class="text-huge-title text-[length:calc(108px*var(--intro-scale))] mb-6 pr-[5vw] font-display font-normal text-white [font-variant-ligatures:common-ligatures] leading-[1.074] tracking-tight max-2xs:text-display max-2xs:leading-16 max-md:mb-12 max-md:pr-0">
+        I am Awesome, <br class="max-900:hidden" />a software engineer.
       </h1>
     </div>
 
-    <ul class="intro-social pr-0 pl-[9.6rem] [list-style:none] z-[1] flex text-[length:1rem] font-normal uppercase tracking-[0.3em] [transform:rotate(-90deg)_translateX(-50%)] [transform-origin:left_bottom] absolute top-[50%] left-[calc(100%_-_6rem)] m-0 py-0 [@media(width<=800px)]:pr-[8rem] [@media(width<=800px)]:pl-0 [@media(width<=800px)]:[transform:none] [@media(width<=800px)]:relative [@media(width<=800px)]:w-full [@media(width<=800px)]:flex-wrap [@media(width<=350px)]:hidden [@media(800px<width<=1200px)]:left-[calc(100%_-_4rem)] [@media(500px<width<=800px)]:left-[var(--gutter)] [@media(400px<width<=500px)]:left-[1.4rem] [@media(width<=400px)]:left-0">
-      <li class="[display:list-item] m-0 px-[1.2rem] py-0 [@media(width<=800px)]:px-[0.6rem]">
+    <ul class="intro-social pl-[96px] list-none z-[1] flex text-[length:10px] font-normal uppercase tracking-wide [transform:rotate(-90deg)_translateX(-50%)] [transform-origin:left_bottom] absolute top-1/2 left-[calc(100%_-_6rem)] max-md:pr-[80px] max-md:pl-0 max-md:transform-none max-md:relative max-md:w-full max-md:flex-wrap max-3xs:hidden max-xl:left-[calc(100%_-_4rem)] max-md:left-[var(--gutter)] max-xs:left-[14px] max-2xs:left-0">
+      <li class="list-item px-[12px] max-md:px-[6px]">
         <a
-          class="bg-[transparent] no-underline text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:text-[color:white] [&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0]"
+          class="text-muted transition-all focus:text-white hover:text-white hover:outline-none active:outline-none"
           href="https://github.com/awesomegoodman"
         >
           Github
@@ -31,11 +31,11 @@
 
   <a
     href="#about"
-    class="intro-scrolldown smoothscroll bg-[transparent] no-underline text-[color:var(--color-1)] flex h-[var(--vspace-1)] w-[var(--vspace-1)] justify-center items-center absolute bottom-[4.8rem] right-[5.8rem] [transition:all_0.3s_ease-in-out_0s] [@media(600px<width<=1200px)]:right-[4rem] [@media(width<=600px)]:right-[2.4rem] [&:focus]:text-[color:var(--color-2)] [&:hover]:text-[color:var(--color-2)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
+    class="intro-scrolldown smoothscroll group/scroll text-accent flex size-8 justify-center items-center absolute bottom-[48px] right-[58px] transition-all max-xl:right-[40px] max-sm:right-[24px] focus:text-secondary hover:text-secondary hover:outline-none active:text-secondary active:outline-none"
     aria-label="Scroll to About"
   >
     <svg
-      class="max-w-full h-[var(--vspace-0-75)] w-[var(--vspace-0-75)]"
+      class="size-6"
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -44,7 +44,7 @@
       clip-rule="evenodd"
     >
       <path
-        class="fill-[white] [transition:all_0.3s_ease-in-out_0s] [.intro-scrolldown:focus_&]:fill-[var(--color-1)] [.intro-scrolldown:hover_&]:fill-[var(--color-1)]"
+        class="fill-white transition-all group-focus/scroll:fill-accent group-hover/scroll:fill-accent"
         d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"
       />
     </svg>

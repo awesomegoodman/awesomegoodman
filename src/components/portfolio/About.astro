@@ -1,4 +1,9 @@
 ---
+import SectionTitle from './SectionTitle.astro';
+import DisplayText from './DisplayText.astro';
+import ButtonLink from './ButtonLink.astro';
+import Timeline from './Timeline.astro';
+import TimelineEntry from './TimelineEntry.astro';
 import aboutPhotoSource from '../../assets/portfolio/about-photo.jpg';
 import { getImage } from 'astro:assets';
 const [aboutPhoto, aboutPhotoRetina] = await Promise.all([
@@ -17,20 +22,17 @@ const [aboutPhoto, aboutPhotoRetina] = await Promise.all([
 ]);
 ---
 
-<section
-  id="about"
-  class="s-about target-section pt-[var(--vspace-4)] pb-[var(--vspace-3)]"
->
+<section id="about" class="s-about target-section pt-32 pb-24">
   <div
-    class="row about-info wide pr-0 pl-[1rem] w-full max-w-[var(--width-wide)] flex flex-row flex-wrap [--gutter:0] items-center mx-auto my-0 py-0 [@media(width<=600px)]:pr-[6vw] [@media(width<=600px)]:w-full [@media(600px<width<=1200px)]:w-[92%] [@media(width<=1200px)]:max-w-[800px] [@media(width<=1200px)]:[--gutter:1.6rem]"
+    class="about-info pl-[10px] w-full max-w-wide flex flex-wrap [--gutter:0] items-center mx-auto max-sm:pr-edge max-sm:w-full max-xl:w-shell max-xl:max-w-bio max-xl:[--gutter:16px]"
     data-animate-block=""
   >
-    <div class="column lg-6 md-12 about-info__pic-block block flex-none w-[50%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(width<=1200px)]:w-full">
+    <div class="flex-none w-1/2 px-gutter max-2xs:px-0 max-xl:w-full">
       <img
         src={aboutPhoto.src}
         srcset={`${aboutPhoto.src} 1x, ${aboutPhotoRetina.src} 2x`}
         alt="Awesome Goodman at his desk"
-        class="about-info__pic max-w-full h-auto opacity-0 object-cover align-bottom m-0 [border-style:none] [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
+        class="about-info__pic opacity-0 object-cover align-bottom no-js:opacity-100 reduced:opacity-100"
         data-animate-el=""
         width={aboutPhoto.attributes.width}
         height={aboutPhoto.attributes.height}
@@ -38,189 +40,105 @@ const [aboutPhoto, aboutPhotoRetina] = await Promise.all([
       />
     </div>
 
-    <div class="column lg-6 md-12 block flex-none w-[50%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(width<=1200px)]:w-full">
-      <div class="about-info__text pt-[var(--vspace-3-5)] pr-[10vw] pb-[var(--vspace-2)] pl-0 m-0 [@media(1200px<width<=1300px)]:pt-[var(--vspace-2)] [@media(1200px<width<=1300px)]:pr-[8rem] [@media(1200px<width<=1300px)]:pb-[var(--vspace-1-5)] [@media(width<=1200px)]:pt-[var(--vspace-1)] [@media(width<=1200px)]:pr-0 [@media(width<=1200px)]:pb-0">
-        <h2
-          class="text-pretitle with-line mt-0 mr-0 mb-[var(--vspace-1)] ml-[0.2rem] pr-0 pl-[6rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-1)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-5)] opacity-0 uppercase tracking-[0.3em] relative [transform:translateX(-6rem)] py-0 [@media(width<=800px)]:pl-[3rem] [@media(width<=800px)]:[transform:none] [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1] before:[box-sizing:inherit] before:content-[''] before:block before:h-[1px] before:w-[4rem] before:bg-[rgba(255,_255,_255,_0.5)] before:absolute before:top-[50%] before:left-0 [@media(width<=800px)]:before:w-[2rem]"
-          data-animate-el=""
-        >
+    <div class="flex-none w-1/2 lg:pl-10 px-gutter max-2xs:px-0 max-xl:w-full">
+      <div class="about-info__text pt-28 pr-[10vw] pb-16 max-1300:pt-16 max-1300:pr-[80px] max-1300:pb-12 max-xl:pt-8 max-xl:pr-0 max-xl:pb-0">
+        <SectionTitle line spacing="wide" animated>
           About
-        </h2>
+        </SectionTitle>
         <p
-          class="attention-getter text-[length:var(--text-md)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] [font-family:var(--font-1)] font-light leading-[var(--vspace-1-25)] text-[color:var(--color-text-dark)] opacity-0 mx-0 p-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
+          class="text-lead mb-8 font-sans font-light leading-10 text-white opacity-0 no-js:opacity-100 reduced:opacity-100"
           data-animate-el=""
         >
-          I am a software engineer, specialising in JavaScript, Python, and PHP.
+          I am a software engineer, specialising in Java, JavaScript, and Python.
           I build software end-to-end, from initial ideation through to
           full-scale cloud deployment. My long-term goal is to transition into
-          robotics. I am deeply interested in STEM and anime, which I actively
+          robotics. I am interested in STEM and anime, which I actively
           pursue in my free time.
         </p>
-        <a
+        <ButtonLink
           href="https://docs.google.com/document/d/1N7GhR8V_9TE0aNX9ik1xk0gMqvIQyNmBq4OaUB9lTjM/export?format=pdf"
-          class="btn btn--medium u-fullwidth bg-[var(--color-btn)] no-underline text-[color:var(--color-btn-text)] w-full mb-0 [--btn-height:calc(var(--vspace-btn)_+_0.8rem)] inline-block [font-family:var(--font-1)] font-semibold text-[length:var(--text-xs)] uppercase tracking-[0.35em] h-[var(--btn-height)] leading-[calc(var(--btn-height)_-_2px)] mt-[var(--vspace-1)] text-center [white-space:nowrap] cursor-pointer [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] mx-0 px-[3.6rem] py-0 [border:1px_solid_var(--color-btn)] [transition:all_0.3s_ease_0s] [&:focus]:bg-[var(--color-btn-hover)] [&:focus]:text-[color:var(--color-btn-hover-text)] [&:focus]:[border-color:var(--color-btn-hover)] [&:focus]:[outline:0] [&:hover]:bg-[var(--color-btn-hover)] [&:hover]:text-[color:var(--color-btn-hover-text)] [&:hover]:[border-color:var(--color-btn-hover)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
+          class="mt-8"
           target="_blank"
           rel="noopener"
         >
           Download CV
-        </a>
+        </ButtonLink>
       </div>
     </div>
   </div>
 
   <div
-    class="row about-expertise pt-[calc(6_*_var(--space))] pb-0 w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap mx-auto my-0 px-0 [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]"
+    class="about-expertise pt-48 w-shell max-w-content flex flex-wrap mx-auto max-sm:w-full max-sm:px-edge"
     data-animate-block=""
   >
-    <div class="column lg-12 block flex-none w-full m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0">
-      <h2
-        class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[0.2rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-5)] opacity-0 uppercase tracking-[0.3em] relative p-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-        data-animate-el=""
-      >
-        Expertise
-      </h2>
+    <div class="flex-none w-full px-gutter max-2xs:px-0">
+      <SectionTitle animated>Expertise</SectionTitle>
 
-      <ul
-        class="skills-list h1 mt-[var(--vspace-1)] mb-[var(--vspace-0-75)] [list-style:none] [font-family:var(--font-2)] font-normal text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-display-1)] leading-[var(--vspace-2)] tracking-[-0.01em] opacity-0 mx-0 p-0 [@media(width<=500px)]:text-[length:var(--text-xxxl)] [@media(width<=500px)]:leading-[calc(1.625_*_var(--space))] [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-        data-animate-el=""
-      >
-        <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-          Frontend
-        </li>
-        <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-          Backend
-        </li>
-        <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-          Automation
-        </li>
-        <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',_']">
-          Web3
-        </li>
-        <li class="inline-block m-0 p-0">Mobile</li>
-      </ul>
+      <DisplayText as="ul" class="skills-list mt-8 list-none" animated>
+        <li class="inline-block after:content-[',_']">Frontend</li>
+        <li class="inline-block after:content-[',_']">Backend</li>
+        <li class="inline-block after:content-[',_']">Automation</li>
+        <li class="inline-block after:content-[',_']">Web3</li>
+        <li class="inline-block">Mobile</li>
+      </DisplayText>
     </div>
   </div>
 
   <div
-    class="row about-timelines pt-[var(--vspace-3)] pb-0 w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap [--timeline-left-padding:var(--vspace-1-75)] [--timeline-top-adjust:var(--vspace-0-5)] mx-auto my-0 px-0 [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw] [@media(800px<width<=1000px)]:[--timeline-left-padding:var(--vspace-1-25)] [@media(400px<width<=800px)]:[--timeline-left-padding:var(--vspace-1-5)] [@media(width<=400px)]:[--timeline-left-padding:var(--vspace-1)]"
+    class="about-timelines pt-24 w-shell max-w-content flex flex-wrap mx-auto max-sm:w-full max-sm:px-edge"
     data-animate-block=""
   >
-    <div class="column lg-6 block flex-none w-[50%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(width<=800px)]:w-full">
-      <h2
-        class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[var(--timeline-left-padding)] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-5)] opacity-0 uppercase tracking-[0.3em] relative p-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-        data-animate-el=""
+    <Timeline title="Experience">
+      <TimelineEntry
+        name="Retailbox"
+        role="Software Engineer"
+        timeframe="November 2024 - Present"
       >
-        Experience
-      </h2>
+        <p class="mb-8">
+          A comprehensive retail management platform designed for businesses of
+          all sizes. Developed and launched the platform as a solo project,
+          achieving a growing number of onboarded stores since its launch on May
+          15, 2025.
+        </p>
+      </TimelineEntry>
 
-      <div
-        class="timeline mt-[var(--vspace-1-25)] mb-0 pr-[1vw] pl-0 opacity-0 relative mx-0 py-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1] before:[box-sizing:inherit] before:content-[''] before:block before:w-[1px] before:h-[calc(100%_-_var(--timeline-top-adjust))] before:bg-[var(--color-border)] before:absolute before:top-[var(--timeline-top-adjust)] before:left-[3px]"
-        data-animate-el=""
+      <TimelineEntry
+        name="Spark Strand"
+        role="Software Engineer"
+        timeframe="April 2025 - December 2025"
       >
-        <div class="timeline__block pt-0 pr-0 pb-[var(--vspace-0-5)] pl-[var(--timeline-left-padding)] relative m-0">
-          <div class="timeline__bullet block h-[8px] w-[8px] [border-radius:50%] bg-[var(--color-1)] absolute top-[var(--timeline-top-adjust)] left-0 m-0 p-0"></div>
-          <div class="timeline__header m-0 p-0">
-            <h3 class="timeline__title mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-medium text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-lg)] leading-[var(--vspace-1)] mx-0 p-0">
-              Retailbox
-            </h3>
-            <p class="timeline__meta text-[length:calc(var(--text-size)_*_1.1053)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-light leading-[var(--vspace-0-875)] mx-0 p-0">
-              Software Engineer
-            </p>
-            <p class="timeline__timeframe text-[length:var(--text-xs)] [text-rendering:optimizeLegibility] mt-[-0.2rem] mb-[var(--vspace-1)] leading-[var(--vspace-0-75)] uppercase tracking-[0.2em] text-[color:var(--color-text-light)] mx-0 p-0">
-              November 2024 - Present
-            </p>
-          </div>
-          <div class="timeline__desc m-0 p-0">
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              A comprehensive retail management platform designed for businesses
-              of all sizes. Developed and launched the platform as a solo
-              project, achieving a growing number of onboarded stores since its
-              launch on May 15, 2025.
-            </p>
-          </div>
-        </div>
+        <p class="mb-8">
+          Spark Strand is a United Kingdom-based creative digital and marketing
+          agency that uses design, web development, and marketing expertise to
+          bring ideas to life for clients across a range of industries.
+        </p>
+      </TimelineEntry>
+    </Timeline>
 
-        <div class="timeline__block pr-0 pl-[var(--timeline-left-padding)] relative m-0 py-0">
-          <div class="timeline__bullet block h-[8px] w-[8px] [border-radius:50%] bg-[var(--color-1)] absolute top-[var(--timeline-top-adjust)] left-0 m-0 p-0"></div>
-          <div class="timeline__header m-0 p-0">
-            <h3 class="timeline__title mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-medium text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-lg)] leading-[var(--vspace-1)] mx-0 p-0">
-              Spark Strand
-            </h3>
-            <p class="timeline__meta text-[length:calc(var(--text-size)_*_1.1053)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-light leading-[var(--vspace-0-875)] mx-0 p-0">
-              Software Engineer
-            </p>
-            <p class="timeline__timeframe text-[length:var(--text-xs)] [text-rendering:optimizeLegibility] mt-[-0.2rem] mb-[var(--vspace-1)] leading-[var(--vspace-0-75)] uppercase tracking-[0.2em] text-[color:var(--color-text-light)] mx-0 p-0">
-              April 2025 - December 2025
-            </p>
-          </div>
-          <div class="timeline__desc m-0 p-0">
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              Spark Strand is a United Kingdom-based creative digital and
-              marketing agency that uses design, web development, and marketing
-              expertise to bring ideas to life for clients across a range of
-              industries.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="column lg-6 block flex-none w-[50%] m-0 px-[var(--gutter)] py-0 [@media(width<=800px)]:mt-[var(--vspace-1-5)] [@media(width<=800px)]:w-full [@media(width<=400px)]:px-0">
-      <h2
-        class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[var(--timeline-left-padding)] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-5)] opacity-0 uppercase tracking-[0.3em] relative p-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1]"
-        data-animate-el=""
+    <Timeline title="Education" class="max-md:mt-12">
+      <TimelineEntry
+        name="Anchor University"
+        role="BSc, Business Administration and Management"
+        timeframe="September 2019 - July 2022"
       >
-        Education
-      </h2>
+        <p class="mb-8">
+          A private missionary university owned by the Deeper Christian Life
+          Ministry, located in Ayobo, Lagos. The institution was founded in
+          September 2017.
+        </p>
+      </TimelineEntry>
 
-      <div
-        class="timeline mt-[var(--vspace-1-25)] mb-0 pr-[1vw] pl-0 opacity-0 relative mx-0 py-0 [.no-js_&]:opacity-[1] [.reduced-motion_&]:opacity-[1] before:[box-sizing:inherit] before:content-[''] before:block before:w-[1px] before:h-[calc(100%_-_var(--timeline-top-adjust))] before:bg-[var(--color-border)] before:absolute before:top-[var(--timeline-top-adjust)] before:left-[3px]"
-        data-animate-el=""
+      <TimelineEntry
+        name="Landmark University"
+        role="BEng, Electrical and Electronics Engineering"
+        timeframe="September 2016 - July 2019"
       >
-        <div class="timeline__block pt-0 pr-0 pb-[var(--vspace-0-5)] pl-[var(--timeline-left-padding)] relative m-0">
-          <div class="timeline__bullet block h-[8px] w-[8px] [border-radius:50%] bg-[var(--color-1)] absolute top-[var(--timeline-top-adjust)] left-0 m-0 p-0"></div>
-          <div class="timeline__header m-0 p-0">
-            <h3 class="timeline__title mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-medium text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-lg)] leading-[var(--vspace-1)] mx-0 p-0">
-              Anchor University
-            </h3>
-            <p class="timeline__meta text-[length:calc(var(--text-size)_*_1.1053)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-light leading-[var(--vspace-0-875)] mx-0 p-0">
-              BSc, Business Administration and Management
-            </p>
-            <p class="timeline__timeframe text-[length:var(--text-xs)] [text-rendering:optimizeLegibility] mt-[-0.2rem] mb-[var(--vspace-1)] leading-[var(--vspace-0-75)] uppercase tracking-[0.2em] text-[color:var(--color-text-light)] mx-0 p-0">
-              September 2019 - July 2022
-            </p>
-          </div>
-          <div class="timeline__desc m-0 p-0">
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              A private missionary university owned by the Deeper Christian Life
-              Ministry, located in Ayobo, Lagos. The institution was founded in
-              September 2017.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline__block pr-0 pl-[var(--timeline-left-padding)] relative m-0 py-0">
-          <div class="timeline__bullet block h-[8px] w-[8px] [border-radius:50%] bg-[var(--color-1)] absolute top-[var(--timeline-top-adjust)] left-0 m-0 p-0"></div>
-          <div class="timeline__header m-0 p-0">
-            <h3 class="timeline__title mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-medium text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-lg)] leading-[var(--vspace-1)] mx-0 p-0">
-              Landmark University
-            </h3>
-            <p class="timeline__meta text-[length:calc(var(--text-size)_*_1.1053)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-125)] [font-family:var(--font-1)] font-light leading-[var(--vspace-0-875)] mx-0 p-0">
-              BEng, Electrical and Electronics Engineering
-            </p>
-            <p class="timeline__timeframe text-[length:var(--text-xs)] [text-rendering:optimizeLegibility] mt-[-0.2rem] mb-[var(--vspace-1)] leading-[var(--vspace-0-75)] uppercase tracking-[0.2em] text-[color:var(--color-text-light)] mx-0 p-0">
-              September 2016 - July 2019
-            </p>
-          </div>
-          <div class="timeline__desc m-0 p-0">
-            <p class="text-[length:inherit] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] mx-0 p-0">
-              A private Christian university located in Omu-Aran, Kwara State,
-              Nigeria. Founded in 2011 by David Oyedepo and affiliated with
-              Living Faith Church Worldwide.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+        <p class="mb-8">
+          A private Christian university located in Omu-Aran, Kwara State,
+          Nigeria. Founded in 2011 by David Oyedepo and affiliated with Living
+          Faith Church Worldwide.
+        </p>
+      </TimelineEntry>
+    </Timeline>
   </div>
 </section>

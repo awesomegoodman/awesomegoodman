@@ -17,10 +17,7 @@ const image = new URL(pathTo('senku.png'), Astro.site);
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  class="portfolio-site no-js leading-[1.15] [-webkit-text-size-adjust:100%] text-[length:var(--base-size)] [box-sizing:border-box] h-full [color-scheme:dark] [:where(&)_*]:[box-sizing:inherit] [:where(&)_*::before]:[box-sizing:inherit] [:where(&)_*::after]:[box-sizing:inherit] [&_[hidden]]:hidden! [&_:focus-visible]:[outline:2px_solid_var(--color-1)]! [&_:focus-visible]:[outline-offset:5px] motion-reduce:[:where(&)_*]:[animation:none]! motion-reduce:[:where(&)_*]:[transition:none]! motion-reduce:[:where(&)_*]:[scroll-behavior:auto]! motion-reduce:[:where(&)_*::before]:[animation:none]! motion-reduce:[:where(&)_*::before]:[transition:none]! motion-reduce:[:where(&)_*::after]:[animation:none]! motion-reduce:[:where(&)_*::after]:[transition:none]! [&_#main:focus]:[outline:none]!"
->
+<html lang="en" class="portfolio-site no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -71,44 +68,42 @@ const image = new URL(pathTo('senku.png'), Astro.site);
   </head>
   <body
     id="top"
-    class:list={[
-      'h-full bg-[var(--color-body)] [-webkit-overflow-scrolling:touch] [-webkit-text-size-adjust:100%] [-webkit-tap-highlight-color:rgba(0,_0,_0,_0)] [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] [font-family:var(--font-1)] text-[length:var(--base-font-size)] font-light leading-[var(--vspace-1)] text-[color:var(--color-text)] m-0',
-      standalone && 'portfolio-gallery',
-    ]}
+    class="h-full bg-page font-sans text-base font-light leading-8 text-copy antialiased"
   >
     <a
-      class="portfolio-skip-link bg-[var(--color-1)] no-underline text-[color:#141516] fixed z-[1000] top-[-100px] left-[1rem] px-[2rem] py-[1rem] [transition:all_0.3s_ease-in-out_0s] [&:focus]:top-[1rem] [&:hover]:[outline:0] [&:active]:[outline:0]"
+      class="portfolio-skip-link bg-accent text-page fixed z-[1000] top-[-100px] left-[10px] px-[20px] py-[10px] transition-all focus:top-[10px] hover:outline-0 active:outline-0"
       href="#main"
     >
       Skip to content
     </a>
     <div
-      class="fixed flex flex-row flex-wrap justify-center items-center bg-[var(--color-body)] z-[500] h-[100vh] w-full opacity-[1] m-0 p-0 [.no-js_&]:hidden"
+      class="fixed flex flex-wrap justify-center items-center bg-page z-[500] h-[100vh] w-full no-js:hidden"
       id="preloader"
       aria-hidden="true"
     >
       <div
-        class="w-[var(--vspace-2)] h-[var(--vspace-2)] bg-[white] [border-radius:100%] [-webkit-animation:sk-scaleout_1s_infinite_ease-in-out] [animation:sk-scaleout_1s_infinite_ease-in-out] m-0 p-0"
+        class="size-16 animate-loader rounded-full bg-white"
         id="loader"
       ></div>
     </div>
-    <div class="s-pagewrap [--circle-width:70vw] [--header-height:6.4rem] flex flex-col min-h-[100%] overflow-hidden relative m-0 p-0 [.ss-preload_&]:invisible [.no-js_&]:visible">
+    <div class="s-pagewrap flex flex-col min-h-full overflow-hidden relative preload:invisible no-js:visible">
       <div
-        class="circles absolute w-[var(--circle-width)] h-[var(--circle-width)] top-[calc(100vh_-_var(--circle-width))] left-[calc(100%_-_33vw)] m-0 p-0 [@media(width<=800px)]:top-[calc(var(--header-height)_+_5vh)]"
+        class="circles absolute size-circles top-[calc(100vh_-_var(--spacing-circles))] left-[calc(100%_-_33vw)] max-md:top-[calc(var(--spacing-header)_+_5vh)]"
         aria-hidden="true"
       >
-        <span class="absolute block [border-radius:50%] opacity-[0.1] [transform:translate(-50%,_-50%)] left-[50%] top-[50%] h-full w-full [border:1px_solid_var(--color-1)]"></span>
-        <span class="absolute block [border-radius:50%] opacity-[0.1] [transform:translate(-50%,_-50%)] left-[50%] top-[50%] h-[80%] w-[80%] [border:1px_solid_var(--color-1)]"></span>
-        <span class="absolute block [border-radius:50%] opacity-[0.1] [transform:translate(-50%,_-50%)] left-[50%] top-[50%] h-[60%] w-[60%] [border:1px_solid_var(--color-1)]"></span>
-        <span class="absolute block [border-radius:50%] opacity-[0.1] [transform:translate(-50%,_-50%)] left-[50%] top-[50%] h-[40%] w-[40%] [border:1px_solid_var(--color-1)]"></span>
-        <span class="absolute block [border-radius:50%] opacity-[0.1] [transform:translate(-50%,_-50%)] left-[50%] top-[50%] h-[20%] w-[20%] [border:1px_solid_var(--color-1)]"></span>
+        {['size-full', 'size-4/5', 'size-3/5', 'size-2/5', 'size-1/5'].map(
+          (size) => (
+            <span
+              class:list={[
+                'absolute top-1/2 left-1/2 block -translate-1/2 rounded-full border border-accent opacity-10',
+                size,
+              ]}
+            />
+          ),
+        )}
       </div>
       <Header standalone={standalone} />
-      <main
-        class="s-content block [&:focus]:[outline-width:medium] [&:focus]:[outline-style:none] [&:focus]:[outline-color:currentColor]"
-        id="main"
-        tabindex="-1"
-      >
+      <main id="main" tabindex="-1">
         <slot />
       </main>
       <Footer />

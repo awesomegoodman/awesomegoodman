@@ -7,6 +7,7 @@
 @import 'swiper/css/pagination' layer(portfolio-vendor);
 @import './fonts.css';
 @import './tokens.css';
+@import './base.css';
 @import './integrations.css';
 @source '../../components/portfolio';
 @source '../../layouts/PortfolioLayout.astro';

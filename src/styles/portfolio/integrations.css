@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: var(--color-body);
+  background: var(--color-page);
   opacity: 0.01;
   transition: opacity 0.4s ease;
   z-index: 1000;
@@ -34,19 +34,19 @@
   --mailtoui-modal-box-shadow:
     0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.08),
     0 4px 4px rgba(0, 0, 0, 0.08), 0 8px 8px rgba(0, 0, 0, 0.08);
-  --mailtoui-modal-head-bgcolor: var(--color-gray-18);
+  --mailtoui-modal-head-bgcolor: var(--color-modal-head);
   --mailtoui-modal-head-title-color: white;
-  --mailtoui-modal-body-bgcolor: var(--color-gray-11);
+  --mailtoui-modal-body-bgcolor: var(--color-modal-body);
   --mailtoui-button-bgcolor: rgba(255, 255, 255, 0.04);
   --mailtoui-button-text-color: white;
-  --mailtoui-button-bgcolor-hover: var(--color-1-dark);
+  --mailtoui-button-bgcolor-hover: var(--color-accent-dark);
   --mailtoui-button-text-color-hover: black;
   --mailtoui-button-text-size: 16px;
-  --mailtoui-email-address-bgcolor: var(--color-gray-13);
+  --mailtoui-email-address-bgcolor: var(--color-modal-address);
   --mailtoui-email-address-text-color: var(--text-color);
   --border-radius: 0;
-  font-family: var(--font-1);
-  background-color: var(--color-body);
+  font-family: var(--font-sans);
+  background-color: var(--color-page);
   color: white;
 }
 :where(.portfolio-site) .mailtoui-modal-content {
@@ -64,7 +64,7 @@
   background-color: var(--mailtoui-modal-head-bgcolor);
 }
 :where(.portfolio-site) .mailtoui-modal-title {
-  font-family: var(--font-1);
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 16px;
   color: var(--mailtoui-modal-head-title-color);
@@ -113,7 +113,7 @@
   box-shadow: none;
 }
 :where(.portfolio-site) .mailtoui-button-icon-copy {
-  line-height: var(--vspace-1);
+  line-height: calc(var(--spacing) * 8);
 }
 :where(.portfolio-site) .mailtoui-button-copy-clicked,
 :where(.portfolio-site) .mailtoui-button-copy-clicked:hover,
@@ -150,7 +150,7 @@
   opacity: 0.4;
 }
 :where(.portfolio-site) .testimonials .swiper-pagination-bullet-active {
-  background: var(--color-1);
+  background: var(--color-accent);
   opacity: 1;
 }
 .portfolio-site .basicLightbox__placeholder {
@@ -183,8 +183,8 @@
   text-decoration: none;
 }
 :where(.portfolio-site) :where(.mailtoui-modal) button {
-  font-family: var(--font-1);
-  line-height: calc(var(--vspace-btn) - 2px);
+  font-family: var(--font-sans);
+  line-height: calc(var(--spacing) * 16 - 2px);
   letter-spacing: 0.35em;
   text-transform: uppercase;
   cursor: pointer;

@@ -4,115 +4,99 @@ interface Props {
   standalone?: boolean;
 }
 const { standalone = false } = Astro.props;
+const links = [
+  { label: 'Awesome.', href: pathTo(), home: true },
+  {
+    label: 'Intro',
+    href: standalone ? `${pathTo()}#intro` : '#intro',
+    smooth: !standalone,
+    current: !standalone,
+  },
+  {
+    label: 'About',
+    href: standalone ? `${pathTo()}#about` : '#about',
+    smooth: !standalone,
+  },
+  { label: 'Works', href: '#works', smooth: true, current: standalone },
+  { label: 'Say Hello', href: '#contact', smooth: true },
+  {
+    label: standalone ? 'Blog' : 'Portfolio',
+    href: standalone ? blogPath() : pathTo('portfolio/'),
+  },
+  ...(!standalone ? [{ label: 'Blog', href: blogPath() }] : []),
+];
 ---
 
-<header class="s-header [--box-shadow:0_1px_1px_rgba(0,_0,_0,_0.06),_0_2px_2px_rgba(0,_0,_0,_0.06),_0_4px_4px_rgba(0,_0,_0,_0.06),_0_8px_8px_rgba(0,_0,_0,_0.06)] z-[100] w-full fixed top-0 left-0 [@media(width<=800px)]:h-[var(--header-height)] [@media(width<=800px)]:[.menu-is-open_&]:h-auto [@media(width<=800px)]:[.no-js_&]:relative [@media(width<=800px)]:[.no-js_&]:h-auto">
-  <div class="header-mobile z-[101] hidden h-[var(--header-height)] bg-[var(--color-body)] [box-shadow:var(--box-shadow)] m-0 p-0 [border-bottom:1px_solid_var(--color-border)] [@media(width<=800px)]:block [@media(width<=800px)]:[.menu-is-open_&]:[box-shadow:none]">
-    <span class="mobile-home-link inline-block relative">
+<header class="s-header fixed top-0 left-0 z-100 w-full max-md:h-header max-md:menu-open:h-auto max-md:no-js:relative max-md:no-js:h-auto">
+  <div class="header-mobile hidden h-header border-b border-b-rule bg-page shadow-header max-md:block max-md:menu-open:shadow-none">
+    <span class="relative inline-block">
       <a
-        class="bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] ml-[2.4rem] px-[0.4rem] py-0 [&:focus]:text-[color:var(--color-1)] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:[outline:0]"
+        class="ml-[24px] block px-[4px] text-[10px] leading-header font-normal tracking-widest text-white uppercase transition-[color,background-color] hover:text-accent focus:text-accent"
         href={pathTo()}
       >
         Awesome.
       </a>
     </span>
     <button
-      class="mobile-menu-toggle [font-family:var(--font-1)] text-[length:var(--text-xs)] leading-[calc(var(--btn-height)_-_2px)] overflow-visible uppercase [-webkit-appearance:button] [--btn-height:var(--vspace-btn)] block font-semibold tracking-[0.35em] h-[var(--header-height)] text-[color:var(--color-btn-text)] no-underline text-center [white-space:nowrap] cursor-pointer bg-[transparent] [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] w-[var(--header-height)] absolute top-0 right-[0.8rem] [border-radius:0] m-0 p-0 [border:0_none_currentColor] [transition:all_0.3s_ease_0s] [&:focus]:text-[color:var(--color-btn-hover-text)] [&:focus]:[outline:0] [&:hover]:text-[color:var(--color-btn-hover-text)] [&:hover]:[outline:0] [@media(width<=800px)]:[.no-js_&]:hidden"
+      class="mobile-menu-toggle absolute top-0 right-[8px] block h-header w-header cursor-pointer rounded-none border-0 border-none border-current bg-transparent text-center font-sans text-xs leading-[calc(var(--spacing)*16-2px)] font-semibold tracking-widest whitespace-nowrap text-accent uppercase antialiased transition-all ease-default hover:text-black focus:text-black max-md:no-js:hidden"
       type="button"
       aria-label="Open navigation"
       aria-expanded="false"
       aria-controls="awesome-navigation"
     >
-      <span class="block bg-[white] w-[24px] h-[1px] mt-[-1px] text-[length:0px] leading-0 [font-family:a] font-normal not-italic [text-shadow:none] text-[color:transparent] absolute right-[20px] top-[50%] bottom-auto left-auto [transition:background-color_0.2s_ease-in-out_0s] [.is-clicked_&]:bg-[rgba(255,_255,_255,_0)] before:[box-sizing:inherit] before:content-[''] before:w-full before:h-full before:bg-[inherit] before:[transition-duration:0.2s,_0.2s] before:[transition-delay:0.2s,_0s] before:absolute before:left-0 before:top-[-8px] before:[transition-property:top,_transform] [.is-clicked_&]:before:bg-[white] [.is-clicked_&]:before:[transition-delay:0s,_0.2s] [.is-clicked_&]:before:top-0 [.is-clicked_&]:before:[transform:rotate(45deg)] after:[box-sizing:inherit] after:content-[''] after:w-full after:h-full after:bg-[inherit] after:[transition-duration:0.2s,_0.2s] after:[transition-delay:0.2s,_0s] after:absolute after:left-0 after:bottom-[-8px] after:[transition-property:bottom,_transform] [.is-clicked_&]:after:bg-[white] [.is-clicked_&]:after:[transition-delay:0s,_0.2s] [.is-clicked_&]:after:bottom-0 [.is-clicked_&]:after:[transform:rotate(-45deg)]">
+      <span
+        class:list={[
+          'absolute top-1/2 right-[20px] block h-px w-[24px] -mt-px bg-white text-[0px] leading-0 font-normal text-transparent [font-family:a] [text-shadow:none] transition-[background-color] duration-200 menu-clicked:bg-transparent',
+          "before:absolute before:top-[-8px] before:left-0 before:h-full before:w-full before:bg-inherit before:content-[''] before:transition-[top,transform] before:duration-[200ms,200ms] before:ease-default before:delay-[200ms,0s]",
+          "after:absolute after:bottom-[-8px] after:left-0 after:h-full after:w-full after:bg-inherit after:content-[''] after:transition-[bottom,transform] after:duration-[200ms,200ms] after:ease-default after:delay-[200ms,0s]",
+          'menu-clicked:before:top-0 menu-clicked:before:bg-white menu-clicked:before:[transform:rotate(45deg)] menu-clicked:before:delay-[0s,200ms]',
+          'menu-clicked:after:bottom-0 menu-clicked:after:bg-white menu-clicked:after:[transform:rotate(-45deg)] menu-clicked:after:delay-[0s,200ms]',
+        ]}
+      >
         Menu
       </span>
     </button>
   </div>
   <div
-    class="row wide main-nav-wrap w-[92%] max-w-[var(--width-wide)] flex flex-row flex-wrap mx-auto my-0 p-0 [@media(width<=1000px)]:w-full [@media(width<=800px)]:[transform:scaleY(0)] [@media(width<=800px)]:[transform-origin:center_top] [@media(width<=800px)]:bg-[var(--color-body)] [@media(width<=800px)]:[box-shadow:var(--box-shadow)] [@media(width<=800px)]:[border-bottom:1px_solid_var(--color-border)] [@media(width<=800px)]:[.menu-is-open_&]:[transform:scaleY(1)] [@media(width<=800px)]:[.menu-is-open_&]:[transition:transform_0.4s_cubic-bezier(0.215,_0.61,_0.355,_1)_0s] [@media(width<=800px)]:[.no-js_&]:[transform:none] [@media(width<=800px)]:[.no-js_&]:visible [@media(width<=800px)]:[.no-js_&]:opacity-[1] [@media(width<=800px)]:[.no-js_&]:static [@media(width<=800px)]:[.no-js_&]:h-auto"
     id="awesome-navigation"
+    class:list={[
+      'main-nav-wrap mx-auto flex w-shell max-w-wide flex-wrap max-lg:w-full',
+      'max-md:origin-top max-md:[transform:scaleY(0)] max-md:border-b max-md:border-b-rule max-md:bg-page max-md:shadow-header',
+      'max-md:menu-open:[transform:scaleY(1)] max-md:menu-open:transition-[transform] max-md:menu-open:duration-400 max-md:menu-open:ease-enter',
+      'max-md:no-js:static max-md:no-js:visible max-md:no-js:h-auto max-md:no-js:opacity-100 max-md:no-js:transform-none',
+    ]}
   >
     <nav
-      class="column lg-12 main-nav block flex-none w-full p-0 [@media(width<=800px)]:pt-[var(--vspace-1)] [@media(width<=800px)]:pb-[var(--vspace-1-5)] [@media(width<=800px)]:[transform:translateY(-2rem)] [@media(width<=800px)]:opacity-0 [@media(width<=800px)]:invisible [@media(width<=400px)]:mx-0 [@media(width<=800px)]:[.menu-is-open_&]:[transform:translateY(0)] [@media(width<=800px)]:[.menu-is-open_&]:opacity-[1] [@media(width<=800px)]:[.menu-is-open_&]:visible [@media(width<=800px)]:[.menu-is-open_&]:[transition:all_0.4s_cubic-bezier(0.215,_0.61,_0.355,_1)_0.4s] [@media(width<=800px)]:[.no-js_&]:[transform:none] [@media(width<=800px)]:[.no-js_&]:opacity-[1] [@media(width<=800px)]:[.no-js_&]:visible"
       aria-label="Portfolio navigation"
+      class:list={[
+        'main-nav w-full flex-none max-md:invisible max-md:pt-8 max-md:pb-12 max-md:opacity-0 max-md:[transform:translateY(-20px)]',
+        'max-md:menu-open:visible max-md:menu-open:opacity-100 max-md:menu-open:[transform:translateY(0)] max-md:menu-open:transition-all max-md:menu-open:duration-400 max-md:menu-open:delay-400 max-md:menu-open:ease-enter',
+        'max-md:no-js:visible max-md:no-js:opacity-100 max-md:no-js:transform-none',
+      ]}
     >
-      <ul class="[list-style:none] flex flex-row flex-nowrap bg-[var(--color-body)] m-0 p-0 [border-top:1px_none_var(--color-border)] [border-right:1px_solid_var(--color-border)] [border-bottom:1px_solid_var(--color-border)] [border-left:1px_solid_var(--color-border)] [@media(width<=800px)]:block [@media(width<=800px)]:bg-[transparent] [@media(width<=800px)]:[border-top-width:medium] [@media(width<=800px)]:[border-top-color:currentColor] [@media(width<=800px)]:text-left [@media(width<=800px)]:[border-right:medium_none_currentColor] [@media(width<=800px)]:[border-bottom:medium_none_currentColor] [@media(width<=800px)]:[border-left:medium_none_currentColor]">
-        <li class="last:[border-right:none] [display:list-item] flex-1 m-0 p-0 [border-right:1px_solid_var(--color-border)] [@media(width<=800px)]:hidden [@media(width<=800px)]:[border:medium_none_currentColor]">
-          <a
-            href={pathTo()}
-            class="home-link bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]"
-          >
-            Awesome.
-          </a>
-        </li>
-        <li
-          class:list={[
-            'last:[border-right:none]',
-            '[display:list-item] flex-1 [border-right-width:1px] [border-right-style:solid] [border-right-color:var(--color-border)] m-0 p-0 [@media(width<=800px)]:block [@media(width<=800px)]:[border-right-width:medium] [@media(width<=800px)]:[border-right-style:none] [@media(width<=800px)]:[border-right-color:currentColor] [@media(width<=800px)]:[border-top-width:medium] [@media(width<=800px)]:[border-top-style:none] [@media(width<=800px)]:[border-top-color:currentColor] [@media(width<=800px)]:[border-bottom-width:medium] [@media(width<=800px)]:[border-bottom-style:none] [@media(width<=800px)]:[border-bottom-color:currentColor] [@media(width<=800px)]:[border-left-width:medium] [@media(width<=800px)]:[border-left-style:none] [@media(width<=800px)]:[border-left-color:currentColor]',
-            !standalone && 'current',
-          ]}
-        >
-          <a
-            href={standalone ? `${pathTo()}#intro` : '#intro'}
+      <ul class="flex list-none flex-nowrap border-x border-b border-rule bg-page max-md:block max-md:border-none max-md:border-current max-md:bg-transparent max-md:text-left">
+        {links.map((link) => (
+          <li
             class:list={[
-              'bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline-width:0] [&:hover]:[outline-style:none] [&:hover]:[outline-color:currentColor] [&:active]:[outline-width:0] [&:active]:[outline-style:none] [&:active]:[outline-color:currentColor] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]',
-              !standalone && 'smoothscroll',
+              'flex-1 border-r border-r-rule last:border-none last:border-current max-md:block max-md:border-none max-md:border-current',
+              'home' in link && link.home && 'max-md:hidden',
+              'current' in link && link.current && 'current',
             ]}
           >
-            Intro
-          </a>
-        </li>
-        <li class="last:[border-right:none] [display:list-item] flex-1 m-0 p-0 [border-right:1px_solid_var(--color-border)] [@media(width<=800px)]:block [@media(width<=800px)]:[border:medium_none_currentColor]">
-          <a
-            href={standalone ? `${pathTo()}#about` : '#about'}
-            class:list={[
-              'bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline-width:0] [&:hover]:[outline-style:none] [&:hover]:[outline-color:currentColor] [&:active]:[outline-width:0] [&:active]:[outline-style:none] [&:active]:[outline-color:currentColor] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]',
-              !standalone && 'smoothscroll',
-            ]}
-          >
-            About
-          </a>
-        </li>
-        <li
-          class:list={[
-            'last:[border-right:none]',
-            '[display:list-item] flex-1 [border-right-width:1px] [border-right-style:solid] [border-right-color:var(--color-border)] m-0 p-0 [@media(width<=800px)]:block [@media(width<=800px)]:[border-right-width:medium] [@media(width<=800px)]:[border-right-style:none] [@media(width<=800px)]:[border-right-color:currentColor] [@media(width<=800px)]:[border-top-width:medium] [@media(width<=800px)]:[border-top-style:none] [@media(width<=800px)]:[border-top-color:currentColor] [@media(width<=800px)]:[border-bottom-width:medium] [@media(width<=800px)]:[border-bottom-style:none] [@media(width<=800px)]:[border-bottom-color:currentColor] [@media(width<=800px)]:[border-left-width:medium] [@media(width<=800px)]:[border-left-style:none] [@media(width<=800px)]:[border-left-color:currentColor]',
-            standalone && 'current',
-          ]}
-        >
-          <a
-            href="#works"
-            class="smoothscroll bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]"
-          >
-            Works
-          </a>
-        </li>
-        <li class="last:[border-right:none] [display:list-item] flex-1 m-0 p-0 [border-right:1px_solid_var(--color-border)] [@media(width<=800px)]:block [@media(width<=800px)]:[border:medium_none_currentColor]">
-          <a
-            href="#contact"
-            class="smoothscroll bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]"
-          >
-            Say Hello
-          </a>
-        </li>
-        <li class="last:[border-right:none] [display:list-item] flex-1 m-0 p-0 [border-right:1px_solid_var(--color-border)] [@media(width<=800px)]:block [@media(width<=800px)]:[border:medium_none_currentColor]">
-          <a
-            class="bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]"
-            href={standalone ? blogPath() : pathTo('portfolio/')}
-          >
-            {standalone ? 'Blog' : 'Portfolio'}
-          </a>
-        </li>
-        {!standalone && (
-          <li class="last:[border-right:none] [display:list-item] flex-1 m-0 p-0 [border-right:medium_none_currentColor] [@media(width<=800px)]:block [@media(width<=800px)]:[border-top:medium_none_currentColor] [@media(width<=800px)]:[border-bottom:medium_none_currentColor] [@media(width<=800px)]:[border-left:medium_none_currentColor]">
             <a
-              class="bg-[transparent] no-underline text-[color:white] [transition-property:color,_background-color] [transition-duration:0.3s] [transition-timing-function:ease-in-out] [transition-delay:0s] block text-[length:10px] font-normal leading-[var(--header-height)] uppercase tracking-[0.35em] pr-[2rem] pl-[2.4rem] py-0 [@media(width<=800px)]:text-[color:var(--color-text)] [@media(width<=800px)]:text-[length:var(--text-md)] [@media(width<=800px)]:leading-[var(--vspace-0-875)] [@media(width<=800px)]:normal-case [@media(width<=800px)]:[letter-spacing:0] [@media(width<=800px)]:[font-family:var(--font-2)] [@media(width<=800px)]:px-[2.8rem] [@media(width<=800px)]:py-[var(--vspace-0-5)] [@media(800px<width<=1000px)]:px-[1.2rem] [@media(width>800px)]:[&:focus]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:focus]:text-[color:white] [@media(width>800px)]:[&:hover]:text-[color:var(--color-1)] [@media(width<=800px)]:[&:hover]:text-[color:white] [&:hover]:[outline:0] [&:active]:[outline:0] [@media(width>800px)]:[.current_&]:bg-[var(--color-gray-9)] [@media(width<=800px)]:[.current_&]:text-[color:var(--color-1)]"
-              href={blogPath()}
+              href={link.href}
+              class:list={[
+                'block pr-[20px] pl-[24px] text-[10px] leading-header font-normal tracking-widest text-white uppercase transition-[color,background-color] hover:text-accent focus:text-accent',
+                'max-lg:md:px-[12px] max-md:px-[28px] max-md:py-4 max-md:font-display max-md:text-lead max-md:leading-7 max-md:tracking-normal max-md:text-copy max-md:normal-case max-md:hover:text-white max-md:focus:text-white',
+                'md:current:bg-panel max-md:current:text-accent!',
+                'home' in link && link.home && 'home-link',
+                'smooth' in link && link.smooth && 'smoothscroll',
+              ]}
             >
-              Blog
+              {link.label}
             </a>
           </li>
-        )}
+        ))}
       </ul>
     </nav>
   </div>

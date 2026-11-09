@@ -1,0 +1,65 @@
+/* Portfolio-only element defaults. Preflight remains disabled for Fieldnotes. */
+@layer base {
+  html.portfolio-site {
+    font-size: 62.5%;
+    line-height: 1.15;
+    box-sizing: border-box;
+    height: 100%;
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  :where(.portfolio-site) body {
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+  }
+  :where(.portfolio-site) button {
+    -webkit-appearance: button;
+  }
+  :where(.portfolio-site) *,
+  :where(.portfolio-site) *::before,
+  :where(.portfolio-site) *::after {
+    box-sizing: inherit;
+  }
+  :where(.portfolio-site) :where(body, div, ul, ol, li, p, h1, h2, h3, button) {
+    margin: 0;
+    padding: 0;
+  }
+  :where(.portfolio-site) :where(p, h1, h2, h3) {
+    text-rendering: optimizeLegibility;
+  }
+  :where(.portfolio-site) :where(img, svg) {
+    max-width: 100%;
+    height: auto;
+  }
+  :where(.portfolio-site) img {
+    border-style: none;
+  }
+  :where(.portfolio-site) a {
+    background-color: transparent;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  :where(.portfolio-site) :where(a:hover, a:active) {
+    outline: 0;
+  }
+}
+/* Global accessibility guarantees must also cover library-generated controls. */
+.portfolio-site [hidden] {
+  display: none !important;
+}
+.portfolio-site :focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 5px;
+}
+.portfolio-site #main:focus {
+  outline: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-site *,
+  .portfolio-site *::before,
+  .portfolio-site *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

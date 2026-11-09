@@ -1,0 +1,33 @@
+---
+import type { GetImageResult } from 'astro';
+interface Props {
+  image: GetImageResult;
+  name: string;
+  role: string;
+}
+const { image, name, role } = Astro.props;
+---
+
+<div class="testimonial-slider__slide group/testimonial swiper-slide shrink-0 w-full h-full relative [transition-property:transform] md:no-js:w-1/2">
+  <div class="testimonial-slider__author mb-4 pl-20 inline-block min-h-16 relative">
+    <img
+      src={image.src}
+      alt="Author image"
+      class="testimonial-slider__avatar h-14 mb-8 w-14 rounded-full outline-none absolute top-0 left-0 grayscale transition-all group-hover/testimonial:filter-none"
+      width={image.attributes.width}
+      height={image.attributes.height}
+      loading="lazy"
+    />
+    <cite class="testimonial-slider__cite block">
+      <strong class="font-normal text-byline leading-6 not-italic text-white transition-all group-hover/testimonial:text-accent">
+        {name}
+      </strong>
+      <span class="not-italic block text-role font-light leading-4 text-muted transition-all group-hover/testimonial:text-white">
+        {role}
+      </span>
+    </cite>
+  </div>
+  <p class="mb-8">
+    <slot />
+  </p>
+</div>

@@ -1,0 +1,26 @@
+---
+import SectionTitle from './SectionTitle.astro';
+interface Props {
+  title: string;
+  class?: string;
+}
+const { title, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'column w-1/2 flex-none px-gutter max-md:w-full max-2xs:px-0',
+    '[--timeline-indent:--spacing(14)] max-lg:[--timeline-indent:--spacing(10)] max-md:[--timeline-indent:--spacing(12)] max-2xs:[--timeline-indent:--spacing(8)]',
+    className,
+  ]}
+>
+  <SectionTitle timeline animated>
+    {title}
+  </SectionTitle>
+  <div
+    class="timeline relative mt-10 pr-[1vw] opacity-0 no-js:opacity-100 reduced:opacity-100 before:absolute before:top-4 before:bottom-0 before:left-[3px] before:block before:w-px before:bg-rule before:content-['']"
+    data-animate-el=""
+  >
+    <slot />
+  </div>
+</div>

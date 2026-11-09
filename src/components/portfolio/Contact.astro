@@ -1,71 +1,72 @@
 ---
+import SectionTitle from './SectionTitle.astro';
+import DisplayText from './DisplayText.astro';
+import ButtonLink from './ButtonLink.astro';
 ---
 
 <section id="contact" class="s-contact target-section">
-  <div class="row contact-top pt-[var(--vspace-5)] pb-0 w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap mx-auto my-0 px-0 [border-top:1px_solid_var(--color-border)] [@media(width<=800px)]:pt-[var(--vspace-4)] [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div class="column lg-12 block flex-none w-full m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0">
-      <h2 class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-5)] ml-[0.2rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-5)] uppercase tracking-[0.3em] relative p-0">
-        Get In Touch
-      </h2>
+  <div class="contact-top pt-40 w-shell max-w-content flex flex-wrap mx-auto border-t border-t-rule max-md:pt-32 max-sm:w-full max-sm:px-edge">
+    <div class="flex-none w-full px-gutter max-2xs:px-0">
+      <SectionTitle>Get In Touch</SectionTitle>
 
-      <p class="h1 text-[length:var(--text-display-1)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-0-75)] [font-family:var(--font-2)] font-normal text-[color:var(--color-text-dark)] [font-variant-ligatures:common-ligatures] leading-[var(--vspace-2)] tracking-[-0.01em] mx-0 p-0 [@media(width<=500px)]:text-[length:var(--text-xxxl)] [@media(width<=500px)]:leading-[calc(1.625_*_var(--space))]">
+      <DisplayText>
         I love to hear from you. Whether you have a question or just want to
         chat about engineering, tech, or anime 😉
-      </p>
+      </DisplayText>
     </div>
   </div>
 
-  <div class="row contact-bottom mt-[var(--vspace-3)] mb-0 pt-0 pb-[var(--vspace-3)] w-[92%] max-w-[var(--width-grid-max)] flex flex-row flex-wrap mx-auto px-0 [border-bottom:1px_solid_var(--color-border)] [@media(width<=600px)]:w-full [@media(width<=600px)]:px-[6vw]">
-    <div class="column lg-3 md-5 stack-on-550 contact-block block flex-none w-[25%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(800px<width<=1200px)]:w-[41.66667%] [@media(550px<width<=800px)]:w-[50%] [@media(width<=550px)]:w-full">
-      <h3 class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-125)] ml-[0.2rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-25)] uppercase tracking-[0.3em] relative p-0">
+  <div class="contact-bottom mt-24 pb-24 w-shell max-w-content flex flex-wrap mx-auto border-b border-b-rule max-sm:w-full max-sm:px-edge">
+    <div class="flex-none w-1/4 px-gutter max-2xs:px-0 max-xl:w-[41.66667%] max-md:w-1/2 max-phone:w-full">
+      <SectionTitle as="h3" spacing="tight">
         Reach me at
-        <p class="contact-links text-[length:var(--text-md)] [text-rendering:optimizeLegibility] mt-0 mb-[var(--vspace-1)] font-light leading-[var(--vspace-1-25)] text-[color:var(--color-text-light)] mx-0 p-0">
+        <p class="contact-links text-lead mb-8 font-light leading-10 text-muted">
           <a
             href="mailto:goodman.awesome@gmail.com"
-            class="mailtoui bg-[transparent] no-underline text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:text-[color:var(--color-1)] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:[outline:0]"
+            class="mailtoui text-muted transition-all focus:text-accent hover:text-accent hover:outline-none active:outline-none"
           >
             goodman.awesome@gmail.com
           </a>{' '}
           <br />
           <a
-            class="bg-[transparent] no-underline text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:text-[color:var(--color-1)] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:[outline:0]"
+            class="text-muted transition-all focus:text-accent hover:text-accent hover:outline-none active:outline-none"
             href="tel:+2349132162576"
           >
             +234 913 216 2576
           </a>
         </p>
-      </h3>
+      </SectionTitle>
     </div>
-    <div class="column lg-4 md-5 stack-on-550 contact-block block flex-none w-[33.33333%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(800px<width<=1200px)]:w-[41.66667%] [@media(550px<width<=800px)]:w-[50%] [@media(width<=550px)]:w-full">
-      <h3 class="text-pretitle mt-0 mr-0 mb-[var(--vspace-0-125)] ml-[0.2rem] [font-family:var(--font-1)] font-normal text-[color:var(--color-white)] [font-variant-ligatures:common-ligatures] [text-rendering:optimizeLegibility] text-[length:var(--text-sm)] leading-[var(--vspace-1-25)] uppercase tracking-[0.3em] relative p-0">
+    <div class="flex-none w-[33.33333%] px-gutter max-2xs:px-0 max-xl:w-[41.66667%] max-md:w-1/2 max-phone:w-full">
+      <SectionTitle as="h3" spacing="tight">
         Social
-        <ul class="contact-social mt-0 mb-[var(--vspace-1)] [list-style:none] text-[length:var(--text-md)] font-light leading-[var(--vspace-1-25)] text-[color:var(--color-text-light)] mx-0 p-0">
-          <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',__']">
+        <ul class="contact-social mb-8 list-none text-lead font-light leading-10 text-muted">
+          <li class="inline-block after:content-[',__']">
             <a
-              class="bg-[transparent] no-underline text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:text-[color:var(--color-1)] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:[outline:0]"
+              class="text-muted transition-all focus:text-accent hover:text-accent hover:outline-none active:outline-none"
               href="https://github.com/awesomegoodman"
             >
               Github
             </a>
           </li>
-          <li class="inline-block m-0 p-0 after:[box-sizing:inherit] after:content-[',__'] after:hidden">
+          <li class="inline-block after:content-[',__'] after:hidden">
             <a
-              class="bg-[transparent] no-underline text-[color:var(--color-text-light)] [transition:all_0.3s_ease-in-out_0s] [&:focus]:text-[color:var(--color-1)] [&:hover]:text-[color:var(--color-1)] [&:hover]:[outline:0] [&:active]:[outline:0]"
+              class="text-muted transition-all focus:text-accent hover:text-accent hover:outline-none active:outline-none"
               href="https://api.whatsapp.com/send?phone=2349132162576"
             >
               Whatsapp
             </a>
           </li>
         </ul>
-      </h3>
+      </SectionTitle>
     </div>
-    <div class="column lg-4 md-12 contact-block block flex-none w-[33.33333%] m-0 px-[var(--gutter)] py-0 [@media(width<=400px)]:px-0 [@media(width<=1200px)]:w-full">
-      <a
+    <div class="flex-none w-[33.33333%] px-gutter max-2xs:px-0 max-xl:w-full">
+      <ButtonLink
         href="mailto:goodman.awesome@gmail.com"
-        class="mailtoui btn btn--medium u-fullwidth contact-btn bg-[var(--color-btn)] no-underline text-[color:var(--color-btn-text)] w-full mb-[var(--vspace-0-5)] [--btn-height:calc(var(--vspace-btn)_+_0.8rem)] inline-block [font-family:var(--font-1)] font-semibold text-[length:var(--text-xs)] uppercase tracking-[0.35em] h-[var(--btn-height)] leading-[calc(var(--btn-height)_-_2px)] mt-0 mr-0 ml-auto text-center [white-space:nowrap] cursor-pointer [-webkit-font-smoothing:antialiased] [-moz-osx-font-smoothing:grayscale] px-[3.6rem] py-0 [border:1px_solid_var(--color-btn)] [transition:all_0.3s_ease_0s] [@media(width<=1200px)]:mt-[var(--vspace-0-5)] [@media(width<=1200px)]:ml-0 [&:focus]:bg-[var(--color-btn-hover)] [&:focus]:text-[color:var(--color-btn-hover-text)] [&:focus]:[border-color:var(--color-btn-hover)] [&:focus]:[outline:0] [&:hover]:bg-[var(--color-btn-hover)] [&:hover]:text-[color:var(--color-btn-hover-text)] [&:hover]:[border-color:var(--color-btn-hover)] [&:hover]:[outline:0] [&:active]:text-[color:var(--color-2)] [&:active]:[outline:0]"
+        class="mailtoui contact-btn mb-4 ml-auto max-xl:mt-4 max-xl:ml-0"
       >
         Say Hello.
-      </a>
+      </ButtonLink>
     </div>
   </div>
 </section>
