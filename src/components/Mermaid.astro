@@ -1,0 +1,40 @@
+---
+---
+
+<script>
+  const blocks = document.querySelectorAll<HTMLElement>(
+    'code.language-mermaid',
+  );
+  if (blocks.length) {
+    const { default: mermaid } = await import('mermaid');
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'neutral',
+      fontFamily: 'system-ui, sans-serif',
+      suppressErrorRendering: true,
+    });
+    for (const [index, block] of blocks.entries()) {
+      const pre = block.closest('pre');
+      if (!pre) continue;
+      const source = block.textContent ?? '';
+      try {
+        const { svg } = await mermaid.render(`diagram-${index}`, source);
+        const figure = document.createElement('figure');
+        figure.className = 'mermaid-diagram';
+        figure.innerHTML = svg;
+        figure.tabIndex = 0;
+        figure.querySelector('svg')?.setAttribute('role', 'img');
+        const details = document.createElement('details');
+        details.className = 'diagram-source';
+        const summary = document.createElement('summary');
+        summary.textContent = 'View diagram source';
+        pre.before(figure, details);
+        details.append(summary, pre);
+      } catch {
+        // Invalid diagrams retain their source rather than breaking the article.
+        pre.setAttribute('aria-label', 'Mermaid diagram source');
+      }
+    }
+  }
+</script>

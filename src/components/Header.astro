@@ -1,0 +1,41 @@
+---
+import { site } from '../config';
+import { pathTo } from '../lib/content';
+import ThemeToggle from './ThemeToggle.astro';
+const links = [
+  ['', 'Home'],
+  ['writing/', 'Writing'],
+  ['projects/', 'Projects'],
+  ['about/', 'About'],
+];
+const current = Astro.url.pathname;
+---
+
+<header class="site-header wrap">
+  <a class="wordmark" href={pathTo()} aria-label={`${site.title} home`}>
+    <span class="monogram" aria-hidden="true">
+      f<span>.</span>
+    </span>
+    <span>
+      {site.title}
+      <small>{site.author} / a personal notebook</small>
+    </span>
+  </a>
+  <div class="header-actions">
+    <nav aria-label="Main navigation">
+      {links.map(([path, label]) => (
+        <a
+          href={pathTo(path)}
+          aria-current={
+            (path ? current.startsWith(pathTo(path)) : current === pathTo())
+              ? 'page'
+              : undefined
+          }
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>

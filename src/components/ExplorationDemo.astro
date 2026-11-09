@@ -1,0 +1,59 @@
+---
+---
+
+<exploration-demo class="interactive-demo">
+  <p class="eyebrow">Interactive / ε-greedy policy</p>
+  <h3>Make room for exploration.</h3>
+  <p>
+    An ε-greedy agent chooses a random action with probability ε. Otherwise, it
+    chooses the action with the highest current estimate.
+  </p>
+  <label>
+    Exploration rate, ε{' '}
+    <input type="range" min="0" max="100" value="20" step="1" disabled />
+  </label>
+  <div
+    class="demo-bar"
+    role="img"
+    aria-label="20 percent exploration, 80 percent exploitation"
+  >
+    <span style="width: 20%"></span>
+  </div>
+  <p class="demo-output" aria-live="polite" aria-atomic="true">
+    <strong>20% explore</strong>
+    <span>80% exploit</span>
+  </p>
+  <p class="demo-caption">
+    The slider changes probabilities, not an agent’s actual training results.
+  </p>
+  <p class="demo-caption demo-fallback">
+    This is a static 20% illustration. Enable JavaScript to adjust the slider.
+  </p>
+</exploration-demo>
+<script>
+  class ExplorationDemo extends HTMLElement {
+    connectedCallback() {
+      const input = this.querySelector('input');
+      const bar = this.querySelector<HTMLElement>('.demo-bar span');
+      const output = this.querySelector('.demo-output');
+      if (!input || !bar || !output) return;
+      input.disabled = false;
+      const fallback = this.querySelector<HTMLElement>('.demo-fallback');
+      if (fallback) fallback.hidden = true;
+      input.addEventListener('input', () => {
+        const value = Number(input.value);
+        bar.style.width = `${value}%`;
+        this.querySelector('.demo-bar')?.setAttribute(
+          'aria-label',
+          `${value} percent exploration, ${100 - value} percent exploitation`,
+        );
+        const left = output.querySelector('strong');
+        const right = output.querySelector('span');
+        if (left) left.textContent = `${value}% explore`;
+        if (right) right.textContent = `${100 - value}% exploit`;
+      });
+    }
+  }
+  if (!customElements.get('exploration-demo'))
+    customElements.define('exploration-demo', ExplorationDemo);
+</script>

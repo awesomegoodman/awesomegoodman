@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { entryUrl, tagLabel } from '../lib/content';
+import ProjectArt from './ProjectArt.astro';
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+const { entry } = Astro.props;
+---
+
+<article class="project-card">
+  <a
+    class="project-image-link"
+    href={entryUrl(entry)}
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <ProjectArt visual={entry.data.visual} />
+  </a>
+  <div class="project-card-copy">
+    <div class="eyebrow card-meta">
+      <span>{entry.data.example ? 'Example project' : entry.data.status}</span>
+      <span>{tagLabel(entry.data.tags[0])}</span>
+    </div>
+    <h3>
+      <a href={entryUrl(entry)}>
+        {entry.data.title}
+        <span aria-hidden="true"> ↗</span>
+      </a>
+    </h3>
+    <p>{entry.data.description}</p>
+    <div class="project-tags">
+      {entry.data.tags.map((tag) => (
+        <span>{tagLabel(tag)}</span>
+      ))}
+    </div>
+  </div>
+</article>

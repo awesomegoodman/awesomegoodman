@@ -1,0 +1,29 @@
+---
+import { site } from '../config';
+import { pathTo } from '../lib/content';
+import Icon from './Icon.astro';
+---
+
+<footer class="site-footer wrap">
+  <div>
+    <a class="footer-title" href={pathTo()}>
+      {site.title}
+      <span class="accent">.</span>
+    </a>
+    <p>An independent corner of the internet.</p>
+  </div>
+  <div class="footer-links">
+    <a href={pathTo('about/')}>About this space</a>
+    <a href={pathTo('rss.xml')}>
+      <Icon name="rss" size={15} /> RSS feed
+    </a>
+    {site.github && <a href={site.github}>GitHub ↗</a>}
+    {site.email && <a href={`mailto:${site.email}`}>Email ↗</a>}
+    <a href={site.portfolio}>Portfolio ↗</a>
+  </div>
+  <p class="colophon">
+    © {new Date().getUTCFullYear()} {site.author}
+    <br />
+    Made with care. Built with Astro.
+  </p>
+</footer>

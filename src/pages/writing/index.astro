@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import { pathTo, published, tagLabel } from '../../lib/content';
+const entries = await published('writing');
+const tags = [...new Set(entries.flatMap((entry) => entry.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Writing"
+  description="Technical notes, experiments, and occasional essays. A notebook for thinking out loud."
+>
+  <div class="wrap archive">
+    <header class="page-heading">
+      <p class="eyebrow">The notebook / {entries.length} entries</p>
+      <h1>
+        Writing<span class="accent">.</span>
+      </h1>
+      <p>
+        Working through ideas, one piece at a time. Technical deep dives, small
+        discoveries, and the occasional detour.
+        {entries.some((entry) => entry.data.example) &&
+          ' Entries marked “Example” demonstrate the site’s features; they are not my publications.'}
+      </p>
+    </header>
+    <nav class="tag-filter" aria-label="Browse writing by topic">
+      <span class="tag active">All writing</span>
+      {tags.map((tag) => (
+        <a class="tag" href={pathTo(`tags/${tag}/`)}>
+          {tagLabel(tag)}
+        </a>
+      ))}
+    </nav>
+    <EntryList entries={entries} />
+    {entries.length === 0 && (
+      <p class="empty-state">
+        No published entries yet. Check back soon, or follow the{' '}
+        <a href={pathTo('rss.xml')}>RSS feed</a>.
+      </p>
+    )}
+    <p class="archive-footnote">
+      A slower corner of the web. Follow new entries with{' '}
+      <a href={pathTo('rss.xml')}>RSS</a>.
+    </p>
+  </div>
+</BaseLayout>

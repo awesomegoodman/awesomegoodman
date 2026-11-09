@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config';
+import { pathTo } from '../lib/content';
+---
+
+<BaseLayout
+  title="About"
+  description="About Awesome Goodman, a software engineer interested in software engineering, robotics, machine learning, algorithms, and ideas beyond code."
+>
+  <div class="wrap about-page">
+    <header class="page-heading">
+      <p class="eyebrow">The person behind the notebook</p>
+      <h1>
+        Hello, I’m {site.author}
+        <span class="accent">.</span>
+      </h1>
+      <p>A software engineer, online as {site.username}.</p>
+    </header>
+    <div class="about-grid">
+      <div class="prose">
+        <h2>What this notebook is for</h2>
+        <p>
+          I’m Awesome Goodman. Fieldnotes is my home for writing, project notes,
+          and ideas: a place to document what I build, explain concepts, record
+          experiments, and work through questions.
+        </p>
+        <p>
+          My main interests are software engineering, robotics, machine
+          learning, algorithms, and other STEM subjects. But the notebook has
+          room for philosophy, theology, anime, gaming, and whatever else
+          invites a closer look.
+        </p>
+        <h2>Notes, rather than final answers</h2>
+        <p>
+          The writing here is non-academic. An entry might be a practical
+          walkthrough, a record of an approach that didn’t work, or an essay
+          around an unresolved question. Updates are dated, and projects leave
+          space for decisions as well as results.
+        </p>
+        <h2>A small, durable home</h2>
+        <p>
+          This site is built with Astro and local Markdown files. Its content
+          lives in Git, and every page is a static file. There are no accounts,
+          comments, trackers, or mailing lists. If you’d like to keep up, the{' '}
+          <a href={pathTo('rss.xml')}>RSS feed</a> is always open.
+        </p>
+        <aside class="callout">
+          <strong>About the example entries</strong>
+          <p>
+            The three articles and two projects marked “Example” demonstrate
+            Fieldnotes’ content formats and technical features. They are not my
+            publications, completed projects, experimental results, or personal
+            achievements.
+          </p>
+        </aside>
+      </div>
+      <aside class="about-sidebar">
+        <p class="eyebrow">On the shelves</p>
+        <ul>
+          <li>Software & systems</li>
+          <li>Robotics</li>
+          <li>Machine learning</li>
+          <li>Algorithms</li>
+          <li>Philosophy & theology</li>
+          <li>Stories & games</li>
+        </ul>
+        <hr />
+        <p class="eyebrow">Find your way</p>
+        <a href={pathTo('writing/')}>Read the notebook ↗</a>
+        <a href={pathTo('projects/')}>Visit the workbench ↗</a>
+        {site.email && <a href={`mailto:${site.email}`}>Get in touch ↗</a>}
+        {site.github && <a href={site.github}>Code on GitHub ↗</a>}
+        <a href={site.portfolio}>Personal portfolio ↗</a>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,168 @@
+---
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import EntryList from '../components/EntryList.astro';
+import Mermaid from '../components/Mermaid.astro';
+import ProjectArt from '../components/ProjectArt.astro';
+import {
+  entryUrl,
+  formatDate,
+  pathTo,
+  readingTime,
+  relatedTo,
+  tagLabel,
+  type Entry,
+} from '../lib/content';
+import { site } from '../config';
+import 'katex/dist/katex.min.css';
+interface Props {
+  entry: Entry;
+  headings: MarkdownHeading[];
+  candidates: Entry[];
+}
+const { entry, headings, candidates } = Astro.props;
+const { data } = entry;
+const isProject = entry.collection === 'projects';
+const related = relatedTo(entry, candidates);
+const toc = headings.filter((heading) => heading.depth === 2);
+const title = `${data.example ? '[Example] ' : ''}${data.title}`;
+const description = data.example
+  ? `Illustrative example, not a record of ${site.author}’s work. ${data.description}`
+  : data.description;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  ...(data.example ? {} : { author: { '@type': 'Person', name: site.author } }),
+  datePublished: data.date.toISOString(),
+  dateModified: (data.updated ?? data.date).toISOString(),
+  url: new URL(entryUrl(entry), Astro.site).href,
+  image: new URL(pathTo('og.png'), Astro.site).href,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  author={data.example ? false : site.author}
+  type="article"
+  date={data.date}
+  updated={data.updated}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(structuredData).replaceAll('<', '\\u003c')}
+  />
+  <div class="wrap entry-page">
+    <header class="article-header">
+      <a class="eyebrow back-link" href={pathTo(`${entry.collection}/`)}>
+        ← {isProject ? 'The workbench' : 'The notebook'}
+      </a>
+      <div class="eyebrow article-type">
+        {data.example && (
+          <span class="example-label">
+            Example {isProject ? 'project' : 'article'}
+          </span>
+        )}
+        <span>
+          {entry.collection === 'writing' ? entry.data.kind : entry.data.status}
+        </span>
+      </div>
+      <h1>{data.title}</h1>
+      <p class="article-deck">{data.description}</p>
+      <div class="article-meta">
+        <span>{data.example ? 'Illustrative example' : site.author}</span>
+        <span aria-hidden="true">/</span>
+        <time datetime={data.date.toISOString()}>{formatDate(data.date)}</time>
+        <span aria-hidden="true">/</span>
+        <span>{readingTime(entry.body)} min read</span>
+      </div>
+      {data.updated && (
+        <p class="updated-date">
+          Updated{' '}
+          <time datetime={data.updated.toISOString()}>
+            {formatDate(data.updated)}
+          </time>
+        </p>
+      )}
+      <div class="article-tags">
+        {data.tags.map((tag) => (
+          <a class="tag" href={pathTo(`tags/${tag}/`)}>
+            {tagLabel(tag)}
+          </a>
+        ))}
+      </div>
+    </header>
+    <div class="article-body-grid">
+      <div class="article-column">
+        {data.example && (
+          <aside class="example-notice">
+            <span class="eyebrow">Illustrative example</span>
+            <p>
+              This entry demonstrates Fieldnotes’ content format. It is not a
+              record of {site.author}’s{' '}
+              {isProject ? 'projects' : 'publications'}, personal achievements,
+              or experimental results. Its dates and
+              {isProject ? ' project status are' : ' content are'} illustrative.
+            </p>
+          </aside>
+        )}
+        {entry.collection === 'projects' && (
+          <>
+            <ProjectArt visual={entry.data.visual} />
+            <div class="project-details">
+              <span>
+                <span class="status-dot"></span>
+                {entry.data.status}
+              </span>
+              {entry.data.repository && (
+                <a href={entry.data.repository}>Source code ↗</a>
+              )}
+              {entry.data.demo && <a href={entry.data.demo}>Live demo ↗</a>}
+            </div>
+          </>
+        )}
+        <article class="prose">
+          <slot />
+        </article>
+        <div class="article-end">
+          <span aria-hidden="true">✳</span>
+          <p>
+            A page from the notebook.
+            <br />
+            <a href={pathTo(`${entry.collection}/`)}>
+              Back to all {isProject ? 'projects' : 'writing'} →
+            </a>
+          </p>
+        </div>
+      </div>
+      {toc.length > 0 && (
+        <aside class="toc">
+          <nav aria-label="On this page">
+            <p class="eyebrow">On this page</p>
+            <ol role="list">
+              {toc.map(({ slug, text }) => (
+                <li>
+                  <a href={`#${slug}`}>{text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </aside>
+      )}
+    </div>
+    {related.length > 0 && (
+      <section class="related" aria-labelledby="related-title">
+        <p class="eyebrow">Keep following the thread</p>
+        <h2 id="related-title">
+          Connected notes<span class="accent">.</span>
+        </h2>
+        <EntryList entries={related} />
+      </section>
+    )}
+  </div>
+  {entry.body?.includes('```mermaid') && <Mermaid />}
+</BaseLayout>

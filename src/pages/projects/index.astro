@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { published } from '../../lib/content';
+const entries = await published('projects');
+---
+
+<BaseLayout
+  title="Projects"
+  description="A workbench for software, robotics, and machine learning. Project notes, design decisions, and experiments."
+>
+  <div class="wrap archive">
+    <header class="page-heading">
+      <p class="eyebrow">The workbench / {entries.length} projects</p>
+      <h1>
+        Ideas, made tangible<span class="accent">.</span>
+      </h1>
+      <p>
+        A place for things built to understand how they work. Each project has a
+        notebook: the questions, decisions, and lessons behind it.
+        {entries.some((entry) => entry.data.example) &&
+          ' Entries marked “Example” are illustrative, not projects I have built.'}
+      </p>
+    </header>
+    <div class="project-grid">
+      {entries.map((entry) => (
+        <ProjectCard entry={entry} />
+      ))}
+    </div>
+    {entries.length === 0 && (
+      <p class="empty-state">
+        The workbench is ready. Projects will appear here as they take shape.
+      </p>
+    )}
+  </div>
+</BaseLayout>

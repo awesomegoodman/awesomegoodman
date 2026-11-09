@@ -1,0 +1,58 @@
+---
+title: 'A learning agent in a small world'
+description: 'An example reinforcement learning workbench: a grid, a reward, and a way to see what an agent is learning.'
+date: 2026-10-06
+tags: [machine-learning, algorithms]
+status: Idea
+visual: grid
+example: true
+featured: true
+---
+
+import gridworld from '../../assets/gridworld.svg';
+
+## The question
+
+How does a simple agent learn to navigate when it is given rewards rather than directions? This example project proposes a small, inspectable environment for exploring tabular reinforcement learning.
+
+No training results are claimed here. The map below is an illustrative environment, not a learned policy.
+
+<figure>
+  <img
+    src={gridworld.src}
+    width="720"
+    height="360"
+    alt="An illustrative gridworld with a start at the lower left, two obstacles, and a goal at the upper right. A dotted path goes around the obstacles."
+    loading="lazy"
+  />
+  <figcaption>
+    A deliberately small environment keeps states and actions easy to inspect.
+  </figcaption>
+</figure>
+
+## A deliberately limited environment
+
+Use a rectangular grid, four directional actions, fixed obstacles, and one terminal goal. Specify what happens when an action hits a wall. Keep the reward function explicit and cap episode length so a stuck agent cannot run forever.
+
+```python
+# An illustrative terminal-aware Q-learning update.
+target = reward
+if not terminated:
+    target += gamma * max(q[next_state])
+
+q[state][action] += alpha * (target - q[state][action])
+```
+
+A training-time limit is not necessarily a terminal state in the underlying task. Record how truncation is handled rather than silently treating every stopped episode as terminal.
+
+## What to compare
+
+A useful first comparison would vary a single exploration schedule while holding other choices fixed. Use several seeded runs. Plot returns over episodes and inspect the final greedy policy, including failure cases.
+
+The companion article, [The useful uncertainty of exploration](../../writing/exploration-vs-exploitation/), includes a small interactive explanation of an ε-greedy policy.
+
+## What to keep in the notebook
+
+Record the environment layout, reward function, initial Q values, random seeds, learning rate, discount factor, and episode budget. Save raw measurements alongside plotting code so a future reader can reproduce a chart.
+
+The goal of this workbench would be understanding an algorithm’s behaviour, not presenting a cherry-picked successful run.

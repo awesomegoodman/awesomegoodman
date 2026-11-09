@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import { pathTo, published, tagLabel, type Entry } from '../../lib/content';
+export async function getStaticPaths() {
+  const entries: Entry[] = [
+    ...(await published('writing')),
+    ...(await published('projects')),
+  ];
+  return [...new Set(entries.flatMap((entry) => entry.data.tags))].map(
+    (tag) => ({
+      params: { tag },
+      props: {
+        tag,
+        entries: entries
+          .filter((entry) => entry.data.tags.includes(tag))
+          .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+      },
+    }),
+  );
+}
+interface Props {
+  tag: string;
+  entries: Entry[];
+}
+const { tag, entries } = Astro.props;
+---
+
+<BaseLayout
+  title={`${tagLabel(tag)} — Topic`}
+  description={`Writing and project notes about ${tagLabel(tag).toLowerCase()}.`}
+>
+  <div class="wrap archive">
+    <header class="page-heading">
+      <a class="eyebrow back-link" href={pathTo('writing/')}>
+        ← Back to writing
+      </a>
+      <h1>
+        {tagLabel(tag)}
+        <span class="accent">.</span>
+      </h1>
+      <p>
+        {entries.length} {entries.length === 1 ? 'entry' : 'entries'} from the
+        notebook and workbench.
+      </p>
+    </header>
+    <EntryList entries={entries} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,158 @@
+---
+interface Props {
+  visual?: 'chess' | 'grid' | 'system';
+}
+const { visual = 'system' } = Astro.props;
+---
+
+<div class={`project-art art-${visual}`} aria-hidden="true">
+  {visual === 'chess' ? (
+    <svg viewBox="0 0 440 230" fill="none">
+      <defs>
+        <pattern
+          id="board"
+          x="130"
+          y="15"
+          width="44"
+          height="44"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width="22" height="22" fill="currentColor" opacity=".1" />
+          <rect
+            x="22"
+            y="22"
+            width="22"
+            height="22"
+            fill="currentColor"
+            opacity=".1"
+          />
+        </pattern>
+      </defs>
+      <rect
+        x="130"
+        y="15"
+        width="176"
+        height="176"
+        fill="url(#board)"
+        stroke="currentColor"
+        stroke-opacity=".2"
+      />
+      <path
+        d="M206 148h44l-5-13h-33l-6 13Zm7-18 4-24-12-5 7-23 12-14 1-14 18 13 9 28-18 14 7 25"
+        stroke="currentColor"
+        stroke-width="2.5"
+        fill="var(--surface)"
+      />
+      <circle cx="232" cy="78" r="2" fill="currentColor" />
+      <path
+        d="m239 183 0 17 45 0"
+        stroke="var(--accent)"
+        stroke-dasharray="3 4"
+      />
+      <text
+        x="320"
+        y="120"
+        fill="currentColor"
+        font-size="10"
+        font-family="monospace"
+      >
+        depth: 04
+      </text>
+      <text
+        x="36"
+        y="76"
+        fill="currentColor"
+        font-size="10"
+        font-family="monospace"
+      >
+        +0.32
+      </text>
+    </svg>
+  ) : visual === 'grid' ? (
+    <svg viewBox="0 0 440 230" fill="none">
+      <defs>
+        <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+          <path d="M36 0H0V36" stroke="currentColor" stroke-opacity=".18" />
+        </pattern>
+      </defs>
+      <rect
+        x="112"
+        y="25"
+        width="216"
+        height="180"
+        fill="url(#grid)"
+        stroke="currentColor"
+        stroke-opacity=".18"
+      />
+      <rect
+        x="184"
+        y="61"
+        width="36"
+        height="72"
+        fill="currentColor"
+        opacity=".09"
+      />
+      <rect
+        x="256"
+        y="97"
+        width="36"
+        height="72"
+        fill="currentColor"
+        opacity=".09"
+      />
+      <path
+        d="M130 187V79h36V43h144"
+        stroke="var(--accent)"
+        stroke-width="2"
+        stroke-dasharray="5 4"
+      />
+      <circle cx="130" cy="187" r="6" fill="currentColor" />
+      <circle cx="310" cy="43" r="9" fill="var(--accent)" />
+      <path d="m306 43 3 3 5-6" stroke="var(--surface)" stroke-width="1.5" />
+      <text
+        x="38"
+        y="125"
+        fill="currentColor"
+        font-family="monospace"
+        font-size="10"
+      >
+        s → a
+      </text>
+      <text
+        x="347"
+        y="174"
+        fill="currentColor"
+        font-family="monospace"
+        font-size="10"
+      >
+        r = +1
+      </text>
+    </svg>
+  ) : (
+    <svg viewBox="0 0 440 230" fill="none">
+      <path
+        d="M85 115h270M220 35v160"
+        stroke="currentColor"
+        stroke-opacity=".2"
+      />
+      <circle
+        cx="220"
+        cy="115"
+        r="67"
+        stroke="currentColor"
+        stroke-opacity=".3"
+      />
+      <circle cx="220" cy="115" r="32" stroke="var(--accent)" />
+      <circle cx="287" cy="115" r="5" fill="var(--accent)" />
+      <text
+        x="310"
+        y="105"
+        fill="currentColor"
+        font-family="monospace"
+        font-size="10"
+      >
+        observe → build
+      </text>
+    </svg>
+  )}
+</div>

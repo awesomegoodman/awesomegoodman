@@ -1,0 +1,44 @@
+---
+import {
+  entryUrl,
+  formatDate,
+  readingTime,
+  tagLabel,
+  type Entry,
+} from '../lib/content';
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props;
+---
+
+<ol class="entry-list" role="list">
+  {entries.map((entry) => (
+    <li class="entry-row">
+      <div class="entry-date">
+        <time datetime={entry.data.date.toISOString()}>
+          {formatDate(entry.data.date)}
+        </time>
+        <span class="entry-kind">
+          {entry.collection === 'writing' ? entry.data.kind : 'Project'}
+        </span>
+      </div>
+      <div class="entry-copy">
+        <div class="eyebrow entry-labels">
+          {entry.data.example && <span class="example-label">Example</span>}
+          <span>{tagLabel(entry.data.tags[0])}</span>
+        </div>
+        <h3>
+          <a href={entryUrl(entry)}>
+            {entry.data.title}
+            <span class="entry-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </h3>
+        <p>{entry.data.description}</p>
+        <span class="reading-time">{readingTime(entry.body)} min read</span>
+      </div>
+    </li>
+  ))}
+</ol>
