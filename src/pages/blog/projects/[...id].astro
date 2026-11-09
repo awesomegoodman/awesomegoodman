@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
-import EntryLayout from '../../layouts/EntryLayout.astro';
-import { published } from '../../lib/content';
+import EntryLayout from '../../../layouts/EntryLayout.astro';
+import { published } from '../../../lib/content';
 export async function getStaticPaths() {
   return (await published('projects')).map((entry) => ({
     params: { id: entry.id },

@@ -1,0 +1,466 @@
+---
+import retailboxPreviewSource from '../../assets/portfolio/portfolio/retailbox.jpg';
+import snakePreviewSource from '../../assets/portfolio/portfolio/snake.png';
+import chessPreviewSource from '../../assets/portfolio/portfolio/chess.jpg';
+import vendboxPreviewSource from '../../assets/portfolio/portfolio/vendbox.jpg';
+import retailboxGallerySource from '../../assets/portfolio/portfolio/gallery/g-retailbox.jpg';
+import snakeGallerySource from '../../assets/portfolio/portfolio/gallery/g-snake.jpg';
+import chessGallerySource from '../../assets/portfolio/portfolio/gallery/g-chess.jpg';
+import vendboxGallerySource from '../../assets/portfolio/portfolio/gallery/g-vendbox.jpg';
+import jojuAvatarSource from '../../assets/portfolio/avatars/user-03.jpg';
+import emmanuelAvatarSource from '../../assets/portfolio/avatars/user-01.jpg';
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+const Heading = standalone ? 'h1' : 'p';
+const Subheading = standalone ? 'p' : 'h2';
+import { getImage } from 'astro:assets';
+const [
+  retailboxPreview,
+  snakePreview,
+  chessPreview,
+  vendboxPreview,
+  retailboxGallery,
+  snakeGallery,
+  chessGallery,
+  vendboxGallery,
+  jojuAvatar,
+  emmanuelAvatar,
+] = await Promise.all([
+  getImage({
+    src: retailboxPreviewSource,
+    width: Math.min(360, retailboxPreviewSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: snakePreviewSource,
+    width: Math.min(360, snakePreviewSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: chessPreviewSource,
+    width: Math.min(360, chessPreviewSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: vendboxPreviewSource,
+    width: Math.min(360, vendboxPreviewSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: retailboxGallerySource,
+    width: Math.min(1360, retailboxGallerySource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: snakeGallerySource,
+    width: Math.min(1360, snakeGallerySource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: chessGallerySource,
+    width: Math.min(1360, chessGallerySource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: vendboxGallerySource,
+    width: Math.min(1360, vendboxGallerySource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: jojuAvatarSource,
+    width: Math.min(144, jojuAvatarSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: emmanuelAvatarSource,
+    width: Math.min(144, emmanuelAvatarSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+]);
+---
+
+<section id="works" class="s-works target-section">
+  <div class="row works-portfolio">
+    <div class="column lg-12" data-animate-block="">
+      <Subheading class="text-pretitle" data-animate-el="">
+        Recent Works
+      </Subheading>
+      <Heading class="h1" data-animate-el>
+        Here are some of my favorite projects I have done lately. Feel free to
+        check them out.
+      </Heading>
+
+      <ul class="folio-list row block-lg-one-half block-stack-on-1000">
+        <li class="folio-list__item column" data-animate-el="">
+          <a
+            class="folio-list__item-link"
+            href="#modal-01"
+            aria-label="Read about Retailbox"
+          >
+            <div class="folio-list__item-pic">
+              <img
+                src={retailboxPreview.src}
+                alt=""
+                width={retailboxPreview.attributes.width}
+                height={retailboxPreview.attributes.height}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="folio-list__item-text">
+              <div class="folio-list__item-cat">Fullstack Web Application</div>
+              <div class="folio-list__item-title">retailbox.</div>
+            </div>
+          </a>
+          <a
+            class="folio-list__proj-link"
+            href="https://www.retailbox.co"
+            aria-label="Visit Retailbox project"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+
+        <li class="folio-list__item column" data-animate-el="">
+          <a
+            class="folio-list__item-link"
+            href="#modal-02"
+            aria-label="Read about Snake Game with Reinforcement Learning"
+          >
+            <div class="folio-list__item-pic">
+              <img
+                src={snakePreview.src}
+                alt=""
+                width={snakePreview.attributes.width}
+                height={snakePreview.attributes.height}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="folio-list__item-text">
+              <div class="folio-list__item-cat">Game &amp; AI</div>
+              <div class="folio-list__item-title">
+                Classic Snake Game + Reinforcement Learning.
+              </div>
+            </div>
+          </a>
+          <a
+            class="folio-list__proj-link"
+            href="https://github.com/awesomegoodman/RL_Snake"
+            aria-label="Visit Snake Game with Reinforcement Learning project"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+
+        <li class="folio-list__item column" data-animate-el="">
+          <a
+            class="folio-list__item-link"
+            href="#modal-03"
+            aria-label="Read about Chess Engine"
+          >
+            <div class="folio-list__item-pic">
+              <img
+                src={chessPreview.src}
+                alt=""
+                width={chessPreview.attributes.width}
+                height={chessPreview.attributes.height}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="folio-list__item-text">
+              <div class="folio-list__item-cat">Game &amp; AI</div>
+              <div class="folio-list__item-title">Chess Engine.</div>
+            </div>
+          </a>
+          <a
+            class="folio-list__proj-link"
+            href="https://github.com/awesomegoodman/chess-engine"
+            aria-label="Visit Chess Engine project"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+
+        <li class="folio-list__item column" data-animate-el="">
+          <a
+            class="folio-list__item-link"
+            href="#modal-04"
+            aria-label="Read about Vendbox"
+          >
+            <div class="folio-list__item-pic">
+              <img
+                src={vendboxPreview.src}
+                alt=""
+                width={vendboxPreview.attributes.width}
+                height={vendboxPreview.attributes.height}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="folio-list__item-text">
+              <div class="folio-list__item-cat">IoT</div>
+              <div class="folio-list__item-title">Vendbox.</div>
+            </div>
+          </a>
+          <a
+            class="folio-list__proj-link"
+            href="https://vend.retailbox.co"
+            aria-label="Visit Vendbox project"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="modal-01" class="project-template">
+      <div class="modal-popup">
+        <img
+          src={retailboxGallery.src}
+          alt="Retailbox dashboard"
+          width={retailboxGallery.attributes.width}
+          height={retailboxGallery.attributes.height}
+          loading="lazy"
+        />
+
+        <div class="modal-popup__desc">
+          <h2 class="modal-popup__title">Retailbox</h2>
+          <p>
+            A comprehensive retail management platform built for businesses of
+            all sizes. Designed and developed as a full-stack solo project,
+            featuring inventory management, sales tracking, analytics, and
+            multi-store support.
+          </p>
+          <ul class="modal-popup__cat">
+            <li>Fullstack Web Application</li>
+            <li>SaaS</li>
+          </ul>
+        </div>
+
+        <a href="https://www.retailbox.co" class="modal-popup__details">
+          Project link
+        </a>
+      </div>
+    </div>
+
+    <div id="modal-02" class="project-template">
+      <div class="modal-popup">
+        <img
+          src={snakeGallery.src}
+          alt="Snake reinforcement learning project"
+          width={snakeGallery.attributes.width}
+          height={snakeGallery.attributes.height}
+          loading="lazy"
+        />
+
+        <div class="modal-popup__desc">
+          <h2 class="modal-popup__title">
+            Snake Game with Reinforcement Learning
+          </h2>
+          <p>
+            A Python implementation of the classic Snake game featuring both
+            human play and an autonomous Q-Learning agent. It demonstrates
+            practical reinforcement learning through Bellman-based Q-updates,
+            state-action value optimisation, and interactive agent training.
+          </p>
+          <ul class="modal-popup__cat">
+            <li>Game Development</li>
+            <li>Artificial Intelligence</li>
+          </ul>
+        </div>
+
+        <a
+          href="https://github.com/awesomegoodman/RL_Snake"
+          class="modal-popup__details"
+        >
+          Project link
+        </a>
+      </div>
+    </div>
+
+    <div id="modal-03" class="project-template">
+      <div class="modal-popup">
+        <img
+          src={chessGallery.src}
+          alt="Chess engine project"
+          width={chessGallery.attributes.width}
+          height={chessGallery.attributes.height}
+          loading="lazy"
+        />
+
+        <div class="modal-popup__desc">
+          <h2 class="modal-popup__title">Chess Engine</h2>
+          <p>
+            A custom C++ chess engine implementing core game logic, move
+            generation, and evaluation strategies. Built to explore game theory
+            concepts, search algorithms, and decision-making in competitive
+            environments.
+          </p>
+          <ul class="modal-popup__cat">
+            <li>Game Development</li>
+            <li>Artificial Intelligence</li>
+          </ul>
+        </div>
+
+        <a
+          href="https://github.com/awesomegoodman/chess-engine"
+          class="modal-popup__details"
+        >
+          Project link
+        </a>
+      </div>
+    </div>
+
+    <div id="modal-04" class="project-template">
+      <div class="modal-popup">
+        <img
+          src={vendboxGallery.src}
+          alt="Vendbox IoT system"
+          width={vendboxGallery.attributes.width}
+          height={vendboxGallery.attributes.height}
+          loading="lazy"
+        />
+
+        <div class="modal-popup__desc">
+          <h2 class="modal-popup__title">Vendbox</h2>
+          <p>
+            IoT-enabled vending machines with cashless and remote management
+            capabilities. The system supports seamless self-checkout, real-time
+            sales and inventory monitoring, and data access via comprehensive
+            APIs.
+          </p>
+          <ul class="modal-popup__cat">
+            <li>IoT</li>
+            <li>Embedded Systems</li>
+          </ul>
+        </div>
+
+        <a href="https://vend.retailbox.co" class="modal-popup__details">
+          Project link
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row testimonials">
+    <div class="column lg-12" data-animate-block="">
+      <div
+        class="swiper swiper-container swiper-container-horizontal testimonial-slider"
+        aria-label="Testimonials"
+        data-animate-el=""
+      >
+        <div class="swiper-wrapper">
+          <div class="testimonial-slider__slide swiper-slide">
+            <div class="testimonial-slider__author">
+              <img
+                src={jojuAvatar.src}
+                alt="Author image"
+                class="testimonial-slider__avatar"
+                width={jojuAvatar.attributes.width}
+                height={jojuAvatar.attributes.height}
+                loading="lazy"
+              />
+              <cite class="testimonial-slider__cite">
+                <strong>Joju</strong>
+                <span>CEO, Jorrel</span>
+              </cite>
+            </div>
+            <p>
+              Awesome is not only skilled at what he does but also dependable
+              and easy to work with. It's always a pleasure working with him.
+            </p>
+          </div>
+
+          <div class="testimonial-slider__slide swiper-slide">
+            <div class="testimonial-slider__author">
+              <img
+                src={emmanuelAvatar.src}
+                alt="Author image"
+                class="testimonial-slider__avatar"
+                width={emmanuelAvatar.attributes.width}
+                height={emmanuelAvatar.attributes.height}
+                loading="lazy"
+              />
+              <cite class="testimonial-slider__cite">
+                <strong>Emmanuel Grant</strong>
+                <span>Partner, Sterlasvan</span>
+              </cite>
+            </div>
+            <p>
+              Awesome approaches problems logically and understands ideas
+              quickly, often without the need for lengthy explanations.
+            </p>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>

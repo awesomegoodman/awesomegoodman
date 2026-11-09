@@ -1,0 +1,162 @@
+---
+import aboutPhotoSource from '../../assets/portfolio/about-photo.jpg';
+import { getImage } from 'astro:assets';
+const [aboutPhoto, aboutPhotoRetina] = await Promise.all([
+  getImage({
+    src: aboutPhotoSource,
+    width: Math.min(900, aboutPhotoSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+  getImage({
+    src: aboutPhotoSource,
+    width: Math.min(1800, aboutPhotoSource.width),
+    format: 'webp',
+    quality: 90,
+  }),
+]);
+---
+
+<section id="about" class="s-about target-section">
+  <div class="row about-info wide" data-animate-block="">
+    <div class="column lg-6 md-12 about-info__pic-block">
+      <img
+        src={aboutPhoto.src}
+        srcset={`${aboutPhoto.src} 1x, ${aboutPhotoRetina.src} 2x`}
+        alt="Awesome Goodman at his desk"
+        class="about-info__pic"
+        data-animate-el=""
+        width={aboutPhoto.attributes.width}
+        height={aboutPhoto.attributes.height}
+        loading="lazy"
+      />
+    </div>
+
+    <div class="column lg-6 md-12">
+      <div class="about-info__text">
+        <h2 class="text-pretitle with-line" data-animate-el="">
+          About
+        </h2>
+        <p class="attention-getter" data-animate-el="">
+          I am a software engineer, specialising in JavaScript, Python, and PHP.
+          I build software end-to-end, from initial ideation through to
+          full-scale cloud deployment. My long-term goal is to transition into
+          robotics. I am deeply interested in STEM and anime, which I actively
+          pursue in my free time.
+        </p>
+        <a
+          href="https://docs.google.com/document/d/14l_8t9Ng3dFIa2Yg9SMXZQwAP4fiRUaIZ2GvpxI3d_8/export?format=pdf"
+          class="btn btn--medium u-fullwidth"
+          target="_blank"
+          rel="noopener"
+        >
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row about-expertise" data-animate-block="">
+    <div class="column lg-12">
+      <h2 class="text-pretitle" data-animate-el="">
+        Expertise
+      </h2>
+
+      <ul class="skills-list h1" data-animate-el="">
+        <li>Frontend</li>
+        <li>Backend</li>
+        <li>Automation</li>
+        <li>Web3</li>
+        <li>Mobile</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row about-timelines" data-animate-block="">
+    <div class="column lg-6 tab-12">
+      <h2 class="text-pretitle" data-animate-el="">
+        Experience
+      </h2>
+
+      <div class="timeline" data-animate-el="">
+        <div class="timeline__block">
+          <div class="timeline__bullet"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__title">Retailbox</h3>
+            <p class="timeline__meta">Software Engineer</p>
+            <p class="timeline__timeframe">November 2024 - Present</p>
+          </div>
+          <div class="timeline__desc">
+            <p>
+              A comprehensive retail management platform designed for businesses
+              of all sizes. Developed and launched the platform as a solo
+              project, achieving a growing number of onboarded stores since its
+              launch on May 15, 2025.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline__block">
+          <div class="timeline__bullet"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__title">Spark Strand</h3>
+            <p class="timeline__meta">Software Engineer</p>
+            <p class="timeline__timeframe">April 2025 - December 2025</p>
+          </div>
+          <div class="timeline__desc">
+            <p>
+              Spark Strand is a United Kingdom-based creative digital and
+              marketing agency that uses design, web development, and marketing
+              expertise to bring ideas to life for clients across a range of
+              industries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column lg-6 tab-12">
+      <h2 class="text-pretitle" data-animate-el="">
+        Education
+      </h2>
+
+      <div class="timeline" data-animate-el="">
+        <div class="timeline__block">
+          <div class="timeline__bullet"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__title">Anchor University</h3>
+            <p class="timeline__meta">
+              BSc, Business Administration and Management
+            </p>
+            <p class="timeline__timeframe">September 2019 - July 2022</p>
+          </div>
+          <div class="timeline__desc">
+            <p>
+              A private missionary university owned by the Deeper Christian Life
+              Ministry, located in Ayobo, Lagos. The institution was founded in
+              September 2017.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline__block">
+          <div class="timeline__bullet"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__title">Landmark University</h3>
+            <p class="timeline__meta">
+              BEng, Electrical and Electronics Engineering
+            </p>
+            <p class="timeline__timeframe">September 2016 - July 2019</p>
+          </div>
+          <div class="timeline__desc">
+            <p>
+              A private Christian university located in Omu-Aran, Kwara State,
+              Nigeria. Founded in 2011 by David Oyedepo and affiliated with
+              Living Faith Church Worldwide.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

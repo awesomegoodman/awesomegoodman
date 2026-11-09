@@ -1,105 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import EntryList from '../components/EntryList.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import NotebookDiagram from '../components/NotebookDiagram.astro';
-import Icon from '../components/Icon.astro';
-import { published, pathTo } from '../lib/content';
-const [writing, projects] = await Promise.all([
-  published('writing'),
-  published('projects'),
-]);
-const featured = projects.filter((entry) => entry.data.featured).slice(0, 2);
-const selectedProjects = featured.length ? featured : projects.slice(0, 2);
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Intro from '../components/portfolio/Intro.astro';
+import About from '../components/portfolio/About.astro';
+import Works from '../components/portfolio/Works.astro';
+import Contact from '../components/portfolio/Contact.astro';
 ---
 
-<BaseLayout>
-  <div class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">
-          <span class="small-line"></span> An engineer’s open notebook
-        </p>
-        <h1 id="hero-title">
-          Thinking in systems.
-          <br />
-          <em>Learning by building.</em>
-        </h1>
-        <p class="hero-description">
-          I’m Awesome Goodman, a software engineer. This is my notebook on
-          software, robotics, machine learning, algorithms, and ideas beyond
-          code.
-        </p>
-        <a class="text-link" href={pathTo('writing/')}>
-          Explore the writing <Icon name="arrow" size={18} />
-        </a>
-      </div>
-      <NotebookDiagram />
-    </section>
-    <div class="topic-strip">
-      <span class="eyebrow">Recurring interests</span>
-      <p>
-        Software engineering <span>/</span> Robotics <span>/</span> Machine
-        learning <span>/</span> Ideas
-      </p>
-    </div>
-    <section class="home-section" aria-labelledby="writing-title">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow section-number">01 / The notebook</p>
-          <h2 id="writing-title">
-            Recent writing<span class="accent">.</span>
-          </h2>
-        </div>
-        <a class="text-link subtle" href={pathTo('writing/')}>
-          All writing <Icon name="arrow" size={17} />
-        </a>
-      </div>
-      <EntryList entries={writing.slice(0, 3)} />
-      {writing.length === 0 && (
-        <p class="empty-state">
-          The notebook is open. The first entry is still to come.
-        </p>
-      )}
-    </section>
-    <section class="home-section" aria-labelledby="projects-title">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow section-number">02 / The workbench</p>
-          <h2 id="projects-title">
-            Learning, in practice<span class="accent">.</span>
-          </h2>
-        </div>
-        <a class="text-link subtle" href={pathTo('projects/')}>
-          All projects <Icon name="arrow" size={17} />
-        </a>
-      </div>
-      <div class="project-grid">
-        {selectedProjects.map((entry) => (
-          <ProjectCard entry={entry} />
-        ))}
-      </div>
-      {projects.length === 0 && (
-        <p class="empty-state">
-          A space for projects, experiments, and the lessons they leave behind.
-        </p>
-      )}
-    </section>
-    <aside class="home-note">
-      <span class="note-symbol" aria-hidden="true">
-        ✳
-      </span>
-      <div>
-        <p class="eyebrow">Beyond the technical</p>
-        <h2>Curiosity doesn’t stay in one lane.</h2>
-        <p>
-          There’s room here for philosophy, theology, stories, games, and
-          questions without tidy answers.
-        </p>
-      </div>
-      <a class="text-link" href={pathTo('about/')}>
-        About this space <Icon name="arrow" size={18} />
-      </a>
-    </aside>
-  </div>
-</BaseLayout>
+<PortfolioLayout>
+  <Intro />
+  <About />
+  <Works />
+  <Contact />
+</PortfolioLayout>

@@ -1,0 +1,148 @@
+/* Interaction and accessibility corrections; original visual rules stay in main.css. */
+html.portfolio-site {
+  color-scheme: dark;
+  --color-text-light: #858585;
+}
+.portfolio-site [hidden] {
+  display: none !important;
+}
+.portfolio-site :focus-visible {
+  outline: 2px solid var(--color-1);
+  outline-offset: 5px;
+}
+.portfolio-site #main:focus {
+  outline: none;
+}
+.portfolio-site .timeline__title {
+  line-height: var(--vspace-1);
+}
+.portfolio-site .timeline__meta {
+  line-height: var(--vspace-0_875);
+}
+.portfolio-site .portfolio-skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: -100px;
+  left: 1rem;
+  padding: 1rem 2rem;
+  background: var(--color-1);
+  color: #141516;
+}
+.portfolio-site .portfolio-skip-link:focus {
+  top: 1rem;
+}
+.portfolio-site button.mobile-menu-toggle {
+  border: 0;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.portfolio-site .project-template {
+  margin: 2rem auto;
+  max-width: 680px;
+  scroll-margin-top: 8rem;
+}
+.portfolio-site.js .project-template {
+  display: none;
+}
+.portfolio-site .modal-popup__title {
+  font-family: var(--font-1);
+  font-size: var(--text-size);
+  font-weight: 500;
+  line-height: var(--vspace-1);
+  color: black;
+  margin: 0 0 var(--vspace-0_25);
+}
+.portfolio-site .portfolio-modal-close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 2;
+  border: 1px solid #777;
+  color: white;
+  background: #141516;
+  height: 44px;
+  width: 44px;
+  font: 2.5rem/1 sans-serif;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.portfolio-site .basicLightbox::after {
+  display: none;
+}
+.portfolio-site .basicLightbox__placeholder {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.portfolio-site .basicLightbox .modal-popup {
+  color-scheme: light;
+}
+.portfolio-site .basicLightbox .modal-popup img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.portfolio-site .basicLightbox .modal-popup__details {
+  background: rgba(0, 0, 0, 0.8);
+}
+.portfolio-site .basicLightbox .modal-popup__desc {
+  padding-top: 1px;
+}
+.portfolio-site.no-js [data-animate-el],
+.portfolio-site.reduced-motion [data-animate-el] {
+  opacity: 1;
+}
+.portfolio-site.no-js .s-pagewrap {
+  visibility: visible;
+}
+.portfolio-site.no-js .testimonial-slider .swiper-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.portfolio-site.no-js .testimonial-slider .swiper-slide {
+  width: 50%;
+}
+/* Fit the added Portfolio/Blog links into the original single-row header. */
+@media (min-width: 801px) and (max-width: 1000px) {
+  .portfolio-site .main-nav a {
+    padding-inline: 1.2rem;
+  }
+}
+@media (max-width: 800px) {
+  .portfolio-site.no-js .main-nav-wrap {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    position: static;
+    height: auto;
+  }
+  .portfolio-site.no-js .main-nav {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  .portfolio-site.no-js .s-header {
+    position: relative;
+    height: auto;
+  }
+  .portfolio-site.no-js .mobile-menu-toggle {
+    display: none;
+  }
+  .portfolio-site.no-js .s-intro {
+    min-height: auto;
+  }
+  .portfolio-site.no-js .testimonial-slider .swiper-slide {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-site *,
+  .portfolio-site *::before,
+  .portfolio-site *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

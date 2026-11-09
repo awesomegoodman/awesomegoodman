@@ -1,6 +1,7 @@
 ---
 import { site } from '../config';
 import { pathTo } from '../lib/content';
+import { pathTo as sitePath } from '../lib/paths';
 import Icon from './Icon.astro';
 ---
 
@@ -19,7 +20,7 @@ import Icon from './Icon.astro';
     </a>
     {site.github && <a href={site.github}>GitHub ↗</a>}
     {site.email && <a href={`mailto:${site.email}`}>Email ↗</a>}
-    <a href={site.portfolio}>Portfolio ↗</a>
+    <a href={sitePath('portfolio/')}>Portfolio ↗</a>
   </div>
   <p class="colophon">
     © {new Date().getUTCFullYear()} {site.author}

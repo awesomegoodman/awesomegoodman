@@ -1,7 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../config';
-import { pathTo } from '../lib/content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../config';
+import { pathTo } from '../../lib/content';
+import { pathTo as sitePath } from '../../lib/paths';
 ---
 
 <BaseLayout
@@ -71,7 +72,7 @@ import { pathTo } from '../lib/content';
         <a href={pathTo('projects/')}>Visit the workbench ↗</a>
         {site.email && <a href={`mailto:${site.email}`}>Get in touch ↗</a>}
         {site.github && <a href={site.github}>Code on GitHub ↗</a>}
-        <a href={site.portfolio}>Personal portfolio ↗</a>
+        <a href={sitePath('portfolio/')}>Personal portfolio ↗</a>
       </aside>
     </div>
   </div>

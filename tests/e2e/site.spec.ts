@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 test('navigation, persisted theme, and responsive layout work', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('/blog/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Thinking in systems.',
   );
@@ -48,7 +48,7 @@ test('technical article renders diagrams and code without client errors', async 
 }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/writing/chess-search/');
+  await page.goto('/blog/writing/chess-search/');
   await expect(page.locator('.mermaid-diagram svg')).toBeVisible();
   await expect(
     page.getByRole('img', { name: 'A minimal chess engine pipeline' }),
@@ -66,7 +66,7 @@ test('technical article renders diagrams and code without client errors', async 
 });
 
 test('MDX demonstration responds to keyboard input', async ({ page }) => {
-  await page.goto('/writing/exploration-vs-exploitation/');
+  await page.goto('/blog/writing/exploration-vs-exploitation/');
   const slider = page.getByRole('slider', { name: 'Exploration rate, ε' });
   await slider.focus();
   await slider.press('ArrowRight');
@@ -82,7 +82,7 @@ test('MDX demonstration responds to keyboard input', async ({ page }) => {
 });
 
 test('keyboard skip link reaches the main content', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/blog/');
   await page.keyboard.press('Tab');
   await expect(
     page.getByRole('link', { name: 'Skip to content' }),
@@ -92,14 +92,14 @@ test('keyboard skip link reaches the main content', async ({ page }) => {
 });
 
 for (const path of [
-  '/',
-  '/writing/',
-  '/projects/',
-  '/about/',
-  '/writing/chess-search/',
-  '/writing/exploration-vs-exploitation/',
-  '/projects/gridworld/',
-  '/404/',
+  '/blog/',
+  '/blog/writing/',
+  '/blog/projects/',
+  '/blog/about/',
+  '/blog/writing/chess-search/',
+  '/blog/writing/exploration-vs-exploitation/',
+  '/blog/projects/gridworld/',
+  '/blog/404/',
 ]) {
   test(`accessibility: ${path}`, async ({ page }) => {
     await page.goto(path);
@@ -122,7 +122,7 @@ test('content and navigation remain available without JavaScript', async ({
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:4321/writing/chess-search/');
+  await page.goto('http://127.0.0.1:4322/blog/writing/chess-search/');
   await expect(page.locator('code.language-mermaid')).toBeVisible();
   await expect(page.locator('.katex').first()).toBeVisible();
   await expect(page.getByRole('button', { name: /Switch to/ })).toBeHidden();
@@ -133,7 +133,9 @@ test('content and navigation remain available without JavaScript', async ({
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Thinking in systems.',
   );
-  await page.goto('http://127.0.0.1:4321/writing/exploration-vs-exploitation/');
+  await page.goto(
+    'http://127.0.0.1:4322/blog/writing/exploration-vs-exploitation/',
+  );
   await expect(page.getByRole('slider')).toBeDisabled();
   await expect(
     page.getByText('This is a static 20% illustration.', { exact: false }),

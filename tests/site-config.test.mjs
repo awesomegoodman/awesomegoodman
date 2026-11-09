@@ -25,16 +25,17 @@ function configuration(overrides = {}) {
   );
 }
 
-test('local development has a working origin without claiming a canonical URL', () => {
+test('the confirmed unified domain is canonical by default, including local builds', () => {
   const result = configuration();
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(JSON.parse(result.stdout), {
-    siteOrigin: 'http://localhost:4321',
-    indexable: false,
+    canonicalOrigin: 'https://awesomegoodman.vercel.app',
+    siteOrigin: 'https://awesomegoodman.vercel.app',
+    indexable: true,
   });
 });
 
-test('initial Vercel build uses only its assigned deployment origin', () => {
+test('Vercel deployment hostnames cannot replace the confirmed canonical origin', () => {
   const result = configuration({
     VERCEL: '1',
     VERCEL_URL: 'fieldnotes-deployment.test',
@@ -42,8 +43,9 @@ test('initial Vercel build uses only its assigned deployment origin', () => {
   });
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(JSON.parse(result.stdout), {
-    siteOrigin: 'https://fieldnotes-deployment.test',
-    indexable: false,
+    canonicalOrigin: 'https://awesomegoodman.vercel.app',
+    siteOrigin: 'https://awesomegoodman.vercel.app',
+    indexable: true,
   });
 });
 
@@ -64,7 +66,7 @@ test('explicit SITE_URL enables production canonicals while previews stay uninde
   }
 });
 
-test('invalid origins and unavailable Vercel system variables fail with an actionable error', () => {
+test('invalid canonical origins fail; deployment variables are optional', () => {
   for (const url of [
     'https://fieldnotes-canonical.test/path',
     'javascript:alert(1)',
@@ -75,6 +77,9 @@ test('invalid origins and unavailable Vercel system variables fail with an actio
     assert.match(result.stderr, /SITE_URL must be an HTTP\(S\) origin/);
   }
   const result = configuration({ VERCEL: '1' });
-  assert.notEqual(result.status, 0);
-  assert.match(result.stderr, /Enable Vercel system environment variables/);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(
+    JSON.parse(result.stdout).siteOrigin,
+    'https://awesomegoodman.vercel.app',
+  );
 });

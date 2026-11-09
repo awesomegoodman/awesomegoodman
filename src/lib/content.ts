@@ -1,13 +1,11 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { blogPath } from './paths';
+export { blogPath as pathTo } from './paths';
 
 export type Entry = CollectionEntry<'writing'> | CollectionEntry<'projects'>;
 
-export function pathTo(path = '') {
-  return `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-}
-
 export function entryUrl(entry: Entry) {
-  return pathTo(`${entry.collection}/${entry.id}/`);
+  return blogPath(`${entry.collection}/${entry.id}/`);
 }
 
 export function formatDate(date: Date) {

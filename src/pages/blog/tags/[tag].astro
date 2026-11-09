@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import EntryList from '../../components/EntryList.astro';
-import { pathTo, published, tagLabel, type Entry } from '../../lib/content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EntryList from '../../../components/EntryList.astro';
+import { pathTo, published, tagLabel, type Entry } from '../../../lib/content';
 export async function getStaticPaths() {
   const entries: Entry[] = [
     ...(await published('writing')),

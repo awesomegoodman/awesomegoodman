@@ -5,6 +5,37 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/about", "destination": "/blog/about/", "permanent": true },
+    {
+      "source": "/writing/:path*",
+      "destination": "/blog/writing/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/projects/:path*",
+      "destination": "/blog/projects/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tags/:path*",
+      "destination": "/blog/tags/:path*",
+      "permanent": true
+    },
+    { "source": "/rss.xml", "destination": "/blog/rss.xml", "permanent": true },
+    {
+      "source": "/favicon.svg",
+      "destination": "/blog/favicon.svg",
+      "permanent": true
+    },
+    { "source": "/og.png", "destination": "/blog/og.png", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    {
+      "source": "/portfolio/index.html",
+      "destination": "/portfolio/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

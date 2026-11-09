@@ -29,9 +29,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
 <circle cx="1014" cy="277" r="6" fill="#a0442b"/>
 </svg>`;
 
-await mkdir('public', { recursive: true });
+await mkdir('public/blog', { recursive: true });
 await writeFile(
-  'public/og.png',
+  'public/blog/og.png',
   await sharp(Buffer.from(svg)).png().toBuffer(),
 );
-console.log('Generated public/og.png (1200 × 630).');
+console.log('Generated public/blog/og.png (1200 × 630).');

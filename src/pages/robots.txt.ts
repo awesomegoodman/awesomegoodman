@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { pathTo } from '../lib/content';
+import { pathTo } from '../lib/paths';
 
 export const GET: APIRoute = ({ site }) =>
   new Response(

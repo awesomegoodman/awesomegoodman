@@ -1,0 +1,98 @@
+---
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+import { pathTo, blogPath } from '../lib/paths';
+import { site } from '../config';
+import { indexable } from '../../site.config.mjs';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import '../styles/portfolio/vendor.css';
+import '../styles/portfolio/main.css';
+import '../styles/portfolio/accessibility.css';
+interface Props {
+  title?: string;
+  standalone?: boolean;
+}
+const { title = site.author, standalone = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const description =
+  'Awesome Goodman — software engineer. Projects, experience, and Fieldnotes on software engineering, robotics, machine learning, and ideas.';
+const image = new URL(pathTo('senku.png'), Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="portfolio-site no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      document.documentElement.classList.replace('no-js', 'js');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('ss-preload');
+      }
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.author} />
+    <meta name="theme-color" content="#141516" />
+    {!indexable && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="icon"
+      type="image/png"
+      href={pathTo('portfolio-icons/icon-32.png')}
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href={pathTo('portfolio-icons/apple-touch-icon.png')}
+      sizes="180x180"
+    />
+    <link rel="manifest" href={pathTo('site.webmanifest')} />
+    <link rel="sitemap" href={pathTo('sitemap-index.xml')} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Fieldnotes RSS"
+      href={blogPath('rss.xml')}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta
+      property="og:image:alt"
+      content="Awesome Goodman’s original portfolio avatar"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+  </head>
+  <body id="top" class:list={[standalone && 'portfolio-gallery']}>
+    <a class="portfolio-skip-link" href="#main">
+      Skip to content
+    </a>
+    <div id="preloader" aria-hidden="true">
+      <div id="loader"></div>
+    </div>
+    <div class="s-pagewrap">
+      <div class="circles" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <Header standalone={standalone} />
+      <main class="s-content" id="main" tabindex="-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script>
+      import '../scripts/portfolio/main';
+    </script>
+  </body>
+</html>

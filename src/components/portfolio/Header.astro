@@ -1,0 +1,71 @@
+---
+import { pathTo, blogPath } from '../../lib/paths';
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+---
+
+<header class="s-header">
+  <div class="header-mobile">
+    <span class="mobile-home-link">
+      <a href={pathTo()}>Awesome.</a>
+    </span>
+    <button
+      class="mobile-menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="awesome-navigation"
+    >
+      <span>Menu</span>
+    </button>
+  </div>
+  <div class="row wide main-nav-wrap" id="awesome-navigation">
+    <nav class="column lg-12 main-nav" aria-label="Portfolio navigation">
+      <ul>
+        <li>
+          <a href={pathTo()} class="home-link">
+            Awesome.
+          </a>
+        </li>
+        <li class:list={[!standalone && 'current']}>
+          <a
+            href={standalone ? `${pathTo()}#intro` : '#intro'}
+            class:list={[!standalone && 'smoothscroll']}
+          >
+            Intro
+          </a>
+        </li>
+        <li>
+          <a
+            href={standalone ? `${pathTo()}#about` : '#about'}
+            class:list={[!standalone && 'smoothscroll']}
+          >
+            About
+          </a>
+        </li>
+        <li class:list={[standalone && 'current']}>
+          <a href="#works" class="smoothscroll">
+            Works
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="smoothscroll">
+            Say Hello
+          </a>
+        </li>
+        <li>
+          <a href={standalone ? blogPath() : pathTo('portfolio/')}>
+            {standalone ? 'Blog' : 'Portfolio'}
+          </a>
+        </li>
+        {!standalone && (
+          <li>
+            <a href={blogPath()}>Blog</a>
+          </li>
+        )}
+      </ul>
+    </nav>
+  </div>
+</header>

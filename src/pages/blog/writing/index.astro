@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import EntryList from '../../components/EntryList.astro';
-import { pathTo, published, tagLabel } from '../../lib/content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EntryList from '../../../components/EntryList.astro';
+import { pathTo, published, tagLabel } from '../../../lib/content';
 const entries = await published('writing');
 const tags = [...new Set(entries.flatMap((entry) => entry.data.tags))].sort();
 ---
